@@ -1,0 +1,130 @@
+# Configuration file for the color ls utility
+# This file goes in the /etc directory, and must be world readable.
+
+# COLOR needs one of these arguments: 'tty' colorizes output to ttys, but not
+# pipes. 'all' adds color characters to all output. 'none' shuts colorization
+# off.
+COLOR tty
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM console
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x60
+TERM xterm
+TERM vt100
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+EIGHTBIT 1
+
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes: 
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+NORMAL 00	# global default, although everything should be something.
+FILE 00 	# normal file
+DIR 00;33 	# directory
+LINK 01;36 	# symbolic link
+FIFO 40;33	# pipe
+SOCK 01;35	# socket
+BLK 40;33	# block device driver
+CHR 40;33 	# character device driver
+ORPHAN 05;36;41
+
+# This is for files with execute permission:
+EXEC 01;32 
+
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+.cmd     01;32 # executables (bright green)
+.exe     01;32
+.com     01;32
+.btm     01;32
+.bat     01;32
+
+.tar     01;35 # compresed and archived files (light magenta)
+.tgz     01;35         
+.tar.gz  01;35
+.tar.bz2 01;35
+.arj     01;35
+.taz     01;35
+.lzh     01;35
+.zip     01;35
+.z       01;35
+.Z       01;35
+.gz      01;35
+.bz2     01;35
+
+# .jpg 07;30;41 # image formats (dark red)
+# .gif 07;30;41
+# .bmp 07;30;41
+# .xbm 07;30;41
+# .xpm 07;30;41
+
+.f   07;30;42 # source code in fortran or TeX or SGML (brown)
+.pl  07;30;42  
+.tex 07;30;42  
+.bib 01;31  
+.sgml 07;30;42
+
+.c   07;30;42 # source code in c (dark green)
+.h   07;30;42 
+.s   07;30;42 
+.awk 07;30;42
+.el  07;30;42 
+
+.o   07;30;46 # objects images (dark cyan)
+.a   07;30;46 
+.dvi 07;30;46 
+.elc 07;30;46 
+
+.inp  01;31 # input files (purple)
+.conf 01;31
+.sc   01;31 
+.html 01;31 
+
+.odt  07;30;47 # input files (office documents)
+.ott  07;30;47 
+.odp  07;30;47 
+.odt  07;30;47 
+.ods  07;30;47 
+.ots  07;30;47 
+.odg  07;30;47 
+.otg  07;30;47 
+.odf  07;30;47 
+.odb  07;30;47 
+.doc  07;30;47 
+.xls  07;30;47 
+
+.xmu 04;36 # common xafs data file extensions (cyan, underscored)
+.nor 04;36
+.chi 04;36
+.rsp 04;36
+.qsp 04;36
+.prj 04;36
+.apj 04;36
+.rec 04;36
+
+.ps  04    # postscript files (bright white)
+.eps 04
+.pdf 04;36
+
+# .f~    34
+# .pl~   34
+# .html~ 34
+# .sgml~ 34
+# .tex~  34
+# .inp~  34
+
+.xmgr 04;33

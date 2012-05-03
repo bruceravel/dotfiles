@@ -1,0 +1,20 @@
+#!/bin/sh
+
+mkdir ~/dotfiles/backup
+
+cp     ~/.bashrc                 ~/dotfiles/backup/bashrc
+ln -sf ~/dotfiles/bashrc         ~/.bashrc
+
+cp     ~/.bash_functions         ~/dotfiles/backup/bash_functions 
+ln -sf ~/dotfiles/bash_functions ~/.bash_functions
+
+cp     ~/.dir_colors             ~/dotfiles/backup/dir_colors
+ln -sf ~/dotfiles/dir_colors     ~/.dir_colors
+
+cp     ~/.gnuplot                ~/dotfiles/backup/gnuplot
+ln -sf ~/dotfiles/gnuplot        ~/.gnuplot
+
+cp     ~/.ackrc                  ~/dotfiles/backup/ackrc
+ln -sf ~/dotfiles/ackrc          ~/.ackrc
+
+

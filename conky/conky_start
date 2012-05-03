@@ -1,0 +1,9 @@
+#!/bin/bash
+conky -c ~/.conky/conkyrc_pinguy &
+
+#conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_clock &
+##conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_weather &
+#conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_sys &
+#conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_net &
+#conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_disk &
+##conky -c ~/.conky/Conky-Mira/Mira_blue/.conkyrc_amarok

@@ -1,0 +1,105 @@
+(defalias 'perl-mode 'cperl-mode)
+(global-set-key [home] 'beginning-of-buffer)
+(global-set-key [end] 'end-of-buffer)
+
+(global-set-key "\C-x/" 'point-to-register)
+(global-set-key "\C-xj" 'register-to-point)
+
+(add-to-list 'load-path "~/dotfiles/emacs/")
+(add-to-list 'load-path "~/git/gnuplot-mode/")
+
+;(load-file "/home/bruce/lisp/emacs/tt-mode.el")
+;(load-file "/home/bruce/lisp/emacs/linum.elc")
+;(load-file "/home/bruce/lisp/emacs/ack.elc")
+
+(add-to-list 'auto-mode-alist '("\\.demeter_conf$" . config-mode))
+(add-to-list 'auto-mode-alist '("\\.tt$"  . tt-mode))
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
+(autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
+(autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot-mode" t)
+(add-to-list 'auto-mode-alist '("\\.gp$" . gnuplot-mode))
+
+(add-hook 'tt-mode-hook 'linum-mode)
+
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md$"  . markdown-mode))
+
+
+(global-set-key [f12] 'magit-status)
+
+
+;; search all open buffers that share the same mode as the active buffer.
+;; see http://www.masteringemacs.org/articles/2011/07/20/searching-buffers-occur-mode/
+(eval-when-compile
+  (require 'cl))
+ 
+(defun get-buffers-matching-mode (mode)
+  "Returns a list of buffers where their major-mode is equal to MODE"
+  (let ((buffer-mode-matches '()))
+   (dolist (buf (buffer-list))
+     (with-current-buffer buf
+       (if (eq mode major-mode)
+           (add-to-list 'buffer-mode-matches buf))))
+   buffer-mode-matches))
+ 
+(defun multi-occur-in-this-mode ()
+  "Show all lines matching REGEXP in buffers with this major mode."
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (car (occur-read-primary-args))))
+ 
+;; global key for `multi-occur-in-this-mode' - you should change this.
+(global-set-key (kbd "M-s b") 'multi-occur-in-this-mode)
+
+
+;; path-to-anything is the path which has the 'anything' we just cloned
+;(add-to-list 'load-path "~/git/anything-config")
+;(require 'anything-config)
+
+;; see http://emacs-fu.blogspot.com/2011/09/finding-just-about-anything.html
+;; (global-set-key (kbd "C-x b")
+;;   (lambda() (interactive)
+;;     (anything
+;;      :prompt "Switch to: "
+;;      :candidate-number-limit 10                 ;; up to 10 of each 
+;;      :sources
+;;      '( anything-c-source-buffers               ;; buffers 
+;;         anything-c-source-recentf               ;; recent files 
+;;         anything-c-source-bookmarks             ;; bookmarks
+;;         anything-c-source-files-in-current-dir+ ;; current dir
+;;         anything-c-source-locate))))            ;; use 'locate'
+
+
+;; skeletons for my favorite Beamer construct in AucTex
+
+(define-skeleton beamer-columns-skeleton
+  "Insert two columns in a Beamer file"
+  nil
+  > "\\begin{columns}[T]" \n
+  -1 " \\begin{column}{0.5\\linewidth}" \n _ \n
+  -3 " \\end{column}" \n
+  -1 " \\begin{column}{0.5\\linewidth}" \n \n
+  -3 " \\end{column}" \n
+  -2 "\\end{columns}")
+
+(add-hook 'LaTeX-mode-hook 
+	  (lambda ()
+	    (auto-fill-mode t)
+	    (define-key LaTeX-mode-map [(control c) (control \3)] 
+	      'beamer-columns-skeleton)))
+
+
+(load-file "/home/bruce/dot/emacs/ack-and-a-half.el")
+(autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
+(autoload 'ack-and-a-half "ack-and-a-half" nil t)
+(autoload 'ack-and-a-half-find-file-same "ack-and-a-half" nil t)
+(autoload 'ack-and-a-half-find-file "ack-and-a-half" nil t)
+;; Create shorter aliases
+(defalias 'ack 'ack-and-a-half)
+(defalias 'ack-same 'ack-and-a-half-same)
+(defalias 'ack-find-file 'ack-and-a-half-find-file)
+(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
