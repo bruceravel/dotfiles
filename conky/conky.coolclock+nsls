@@ -1,0 +1,69 @@
+alignment top_right
+background yes
+border_width 1
+color1 white
+color2 b4e6fe
+color3 303030
+cpu_avg_samples 2
+default_color c8befe
+default_outline_color white
+default_shade_color white
+double_buffer no
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+gap_x 0
+gap_y 0 
+maximum_width 210
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+minimum_size 250 10
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+#wm_class_name Conky
+own_window_colour c8c4aa
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+own_window_type normal
+own_window yes
+stippled_borders 2
+update_interval 10
+uppercase no
+use_spacer yes
+use_xft yes
+xftalpha 0.8
+xftfont  Droid Sans:size=13
+
+TEXT
+${alignc}${color2}NSLS X-ray status
+${color1}Beam available: ${alignr}$color${execi 120 ~/.conky/nsls_available.pl}
+${color1}Current: ${alignr}$color${execi 120 ~/.conky/nsls_current.pl}
+${color1}X23A2 Shutter: ${alignr}$color${execi 600 ~/.conky/nsls_shutter.pl}
+${color2}${font Droid Sans:size=7}${alignc}${execi 120 ~/.conky/nsls_msg.pl}
+
+${color}${hr 2}
+
+## http://pastebin.com/SpZd5PH7
+${font Droid Sans Mono:size=11}${alignc}${color}I T ${color3}L ${color}I S ${color3}A S T I M E
+${alignc}${if_match ${exec date +"%M"} < 33}${if_match ${exec date +"%M"} >= 13}${if_match ${exec date +"%M"} < 18}${color}${endif}${endif}A ${color3}C ${if_match ${exec date +"%M"} >= 13}${if_match ${exec date +"%M"} < 18}${color}${endif}${endif}Q U A R T E R ${color3}D C
+${alignc}${if_match ${exec date +"%M"} >= 18}${if_match ${exec date +"%M"} < 28}${color}${endif}${endif}T W E N T Y ${if_match ${exec date +"%M"} >= 23}${if_match ${exec date +"%M"} < 28}${color}${endif}${else}${color3}${endif}${if_match ${exec date +"%M"} >= 3}${if_match ${exec date +"%M"} < 8}${color}${endif}${endif}F I V E ${color3}X
+${alignc}${if_match ${exec date +"%M"} >= 28}${if_match ${exec date +"%M"} < 33}${color}${endif}${endif}H A L F ${color3}B ${if_match ${exec date +"%M"} >= 8}${if_match ${exec date +"%M"} < 13}${color}${endif}${endif}T E N ${color3}F T O
+${alignc}${else}${if_match ${exec date +"%M"} >= 43}${if_match ${exec date +"%M"} < 48}${color}${endif}${endif}A ${color3}C ${if_match ${exec date +"%M"} >= 43}${if_match ${exec date +"%M"} < 48}${color}${endif}${endif}Q U A R T E R ${color3}D C
+${alignc}${if_match ${exec date +"%M"} >= 33}${if_match ${exec date +"%M"} < 43}${color}${endif}${endif}T W E N T Y ${if_match ${exec date +"%M"} < 38}${if_match ${exec date +"%M"} >= 33}${color}${endif}${else}${color3}${endif}${if_match ${exec date +"%M"} >= 53}${color}${endif}F I V E ${color3}X
+${alignc}H A L F B ${if_match ${exec date +"%M"} >= 48}${if_match ${exec date +"%M"} < 53}${color}${endif}${endif}T E N ${color3}F ${color}T O${color3}
+${alignc}${endif}${if_match ${exec date +"%M"} < 33}${if_match ${exec date +"%M"} >= 3}${color}${endif}${endif}P A S T ${color3}E R U ${if_match ${exec date +"%M"} < 33}${if_match ${exec date +"%I"} == 9}${color}${else}${color3}${endif}N I N E
+${alignc}${if_match ${exec date +"%I"} == 1}${color}${else}${color3}${endif}O N E ${if_match ${exec date +"%I"} == 6}${color}${else}${color3}${endif}S I X ${if_match ${exec date +"%I"} == 3}${color}${else}${color3}${endif}T H R E E
+${alignc}${if_match ${exec date +"%I"} == 4}${color}${else}${color3}${endif}F O U R ${if_match ${exec date +"%I"} == 5}${color}${else}${color3}${endif}F I V E ${if_match ${exec date +"%I"} == 2}${color}${else}${color3}${endif}T W O
+${alignc}${if_match ${exec date +"%I"} == 8}${color}${else}${color3}${endif}E I G H T ${if_match ${exec date +"%I"} == 11}${color}${else}${color3}${endif}E L E V E N
+${alignc}${if_match ${exec date +"%I"} == 7}${color}${else}${color3}${endif}S E V E N ${if_match ${exec date +"%I"} == 12}${color}${else}${color3}${endif}T W E L V E
+${alignc}${if_match ${exec date +"%I"} == 10}${color}${else}${color3}${endif}T E N ${else}${if_match ${exec date +"%I"} == 8}${color}${else}${color3}${endif}N I N E
+${alignc}${if_match ${exec date +"%I"} == 12}${color}${else}${color3}${endif}O N E ${if_match ${exec date +"%I"} == 5}${color}${else}${color3}${endif}S I X ${if_match ${exec date +"%I"} == 2}${color}${else}${color3}${endif}T H R E E
+${alignc}${if_match ${exec date +"%I"} == 3}${color}${else}${color3}${endif}F O U R ${if_match ${exec date +"%I"} == 4}${color}${else}${color3}${endif}F I V E ${if_match ${exec date +"%I"} == 1}${color}${else}${color3}${endif}T W O
+${alignc}${if_match ${exec date +"%I"} == 7}${color}${else}${color3}${endif}E I G H T${if_match ${exec date +"%I"} == 10}${color}${else}${color3}${endif} E L E V E N
+${alignc}${if_match ${exec date +"%I"} == 6}${color}${else}${color3}${endif}S E V E N${if_match ${exec date +"%I"} == 11}${color}${else}${color3}${endif} T W E L V E
+${alignc}${if_match ${exec date +"%I"} == 9}${color}${else}${color3}${endif}T E N ${endif}${color3}S E ${if_match ${exec date +"%M"} < 3}${color}${endif}O C L O C K
+
+${color2}${font Droid Sans Mono:size=9}${alignc}${time %A, %d %B %Y (%U)}
