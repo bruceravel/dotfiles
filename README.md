@@ -7,6 +7,9 @@ Personal account configuration
 
 insert `(load-file  "~/dotfiles/emacs/myemacs.el")` into `~/.emacs`
 
+Using Amarok's moodbar: http://userbase.kde.org/Amarok/Manual/Various/Moodbar
+also need to install `moodbar` package.
+
 ## get things ##
 
  * Ack mode for emacs: https://github.com/jhelwig/ack-and-a-half
