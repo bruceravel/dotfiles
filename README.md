@@ -13,6 +13,7 @@ also need to install `moodbar` package.
 ## get things ##
 
  * Ack mode for emacs: https://github.com/jhelwig/ack-and-a-half
+ * tangotango color mode for Emacs: https://github.com/juba/color-theme-tangotango
  * Themes for GKrellM: http://www.muhri.net/gkrellm/
 
 ## Solving problems ##
