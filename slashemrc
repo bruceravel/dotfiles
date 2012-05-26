@@ -1,0 +1,11 @@
+OPTIONS=name:Porphyrio,catname:Meeeow,dogname:Rowf,horsename:MrEd
+OPTIONS=color,hilite_pet,lit_corridor
+OPTIONS=help,!news,mail,silent,time
+OPTIONS=showexp,showrace,showweight,showdmg
+OPTIONS=!autopickup
+#OPTIONS=pickup_types:$
+
+#TILES=name:Small tiles,file:x11tiles
+#TILES=name:Big tiles,file:x11bigtiles,transparent
+#TILES=name:Big 3D tiles,file:x11big3dtiles,transparent,pseudo3D
+OPTIONS=tiles:Small tiles

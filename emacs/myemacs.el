@@ -29,6 +29,7 @@
 
 (global-set-key [f12] 'magit-status)
 
+(load-file "~/dotfiles/emacs/load-ecb.el")
 
 ;; search all open buffers that share the same mode as the active buffer.
 ;; see http://www.masteringemacs.org/articles/2011/07/20/searching-buffers-occur-mode/

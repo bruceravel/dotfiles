@@ -1,6 +1,9 @@
 #!/bin/sh
 
-mkdir ~/dotfiles/backup
+if [ ! -e ~/dotfiles/backup ]; then
+    mkdir ~/dotfiles/backup
+fi
+
 
 cp     ~/.bashrc                 ~/dotfiles/backup/bashrc
 ln -sf ~/dotfiles/bashrc         ~/.bashrc
@@ -16,5 +19,8 @@ ln -sf ~/dotfiles/gnuplot        ~/.gnuplot
 
 cp     ~/.ackrc                  ~/dotfiles/backup/ackrc
 ln -sf ~/dotfiles/ackrc          ~/.ackrc
+
+cp     ~/.slashemrc-gtk          ~/dotfiles/backup/slashemrc
+ln -sf ~/dotfiles/slashemrc      ~/.slashemrc-gtk
 
 
