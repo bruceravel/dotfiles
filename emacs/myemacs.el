@@ -1,34 +1,31 @@
 (defalias 'perl-mode 'cperl-mode)
+
+;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key [home] 'beginning-of-buffer)
 (global-set-key [end] 'end-of-buffer)
-
 (global-set-key "\C-x/" 'point-to-register)
 (global-set-key "\C-xj" 'register-to-point)
+(global-set-key [f12] 'magit-status)
 
 (add-to-list 'load-path "~/dotfiles/emacs/")
 (add-to-list 'load-path "~/git/gnuplot-mode/")
 
-;(load-file "/home/bruce/lisp/emacs/tt-mode.el")
-;(load-file "/home/bruce/lisp/emacs/linum.elc")
-;(load-file "/home/bruce/lisp/emacs/ack.elc")
+;;;;;;;;; Major modes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'tt-mode             "tt-mode"          "Major mode for Template Toolkit files" t)
+(autoload 'gnuplot-mode        "gnuplot"          "gnuplot major mode"                    t)
+(autoload 'gnuplot-make-buffer "gnuplot"          "open a buffer in gnuplot-mode"         t)
+(autoload 'markdown-mode       "markdown-mode.el" "Major mode for editing Markdown files" t)
 
 (add-to-list 'auto-mode-alist '("\\.demeter_conf$" . config-mode))
-(add-to-list 'auto-mode-alist '("\\.tt$"  . tt-mode))
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
-(autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
-(autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot-mode" t)
-(add-to-list 'auto-mode-alist '("\\.gp$" . gnuplot-mode))
+(add-to-list 'auto-mode-alist '("\\.tt$"           . tt-mode))
+(add-to-list 'auto-mode-alist '("\\.org$"          . org-mode))
+(add-to-list 'auto-mode-alist '("\\.md$"           . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.gp$"           . gnuplot-mode))
 
 (add-hook 'tt-mode-hook 'linum-mode)
+(add-hook 'tt-mode-hook 'auto-fill-mode)
 
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.md$"  . markdown-mode))
-
-
-(global-set-key [f12] 'magit-status)
-
+;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-file "~/dotfiles/emacs/load-ecb.el")
 
 ;; search all open buffers that share the same mode as the active buffer.
@@ -74,8 +71,9 @@
 ;;         anything-c-source-locate))))            ;; use 'locate'
 
 
-;; skeletons for my favorite Beamer construct in AucTex
 
+;;;;;;;;; skeletons ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; skeletons for my favorite Beamer construct in AucTex
 (define-skeleton beamer-columns-skeleton
   "Insert two columns in a Beamer file"
   nil
@@ -93,6 +91,7 @@
 	      'beamer-columns-skeleton)))
 
 
+;;;;;;;;; ack integration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-file "/home/bruce/dotfiles/emacs/ack-and-a-half.el")
 (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
 (autoload 'ack-and-a-half "ack-and-a-half" nil t)
@@ -106,7 +105,7 @@
 
 
 
-;;;; install a color theme
+;;;;;;;;; color theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; see http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme
 
 (require 'color-theme)
