@@ -20,6 +20,9 @@ also need to install `moodbar` package.
 
  * Git + proxy: see http://xzis.me/2012/02/git-with-proxy/
  * apt-get + proxy:  see http://askubuntu.com/questions/38823/how-to-use-apt-get-synaptic-behind-a-proxy
+ * permission denied when using locate:
+     sudo chgrp mlocate /usr/bin/mlocate 
+     sudo chmod g+s /usr/bin/mlocate
 
 ## machine specific ##
 
