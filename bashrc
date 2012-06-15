@@ -64,6 +64,8 @@ export PERL5OPT="-I$HOME/git/demeter/lib -I$HOME/git/XAS-Data-Interchange/perl/l
 export PAGER=less
 export PATH=~/bin:$PATH
 export TEXINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/sty//:"
+export BSTINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/sty//:"
+export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/sty//:"
 
 alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export ftp_proxy=$http_proxy'
 alias noproxy='export http_proxy=  && export ftp_proxy=$http_proxy'
