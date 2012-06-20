@@ -87,6 +87,7 @@
 (add-hook 'LaTeX-mode-hook 
 	  (lambda ()
 	    (auto-fill-mode t)
+	    (reftex-mode t)
 	    (define-key LaTeX-mode-map [(control c) (control \3)] 
 	      'beamer-columns-skeleton)))
 
