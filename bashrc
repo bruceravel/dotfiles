@@ -60,7 +60,8 @@ fi
 
 ## my modifications
 export PERL5LIB=$HOME/perl
-export PERL5OPT="-I$HOME/git/demeter/lib -I$HOME/git/XAS-Data-Interchange/perl/lib -I/$HOME/git/BLA-XANES/lib"
+#export PERL5OPT="-I$HOME/git/demeter/lib -I$HOME/git/XAS-Data-Interchange/perl/lib -I$HOME/git/XAS-Data-Interchange/perl/blib/arch -I/$HOME/git/BLA-XANES/lib"
+export PERL5OPT="-I$HOME/git/demeter/lib -I/$HOME/git/BLA-XANES/lib"
 export PAGER=less
 export PATH=~/bin:$PATH
 export TEXINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/sty//:"
