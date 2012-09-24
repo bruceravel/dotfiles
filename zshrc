@@ -4,6 +4,10 @@
 
 ## edit ~/.zprezto/modules/utility/init.zsh at line 64 to add -F
 
+# For
+#   Failed to load module "canberra-gtk-moduleanberra-gtk-module" 
+# See comment #8 at
+#   https://bugs.launchpad.net/ubuntu/+source/libcanberra/+bug/888779
 
 ############################################################################
 ## Environment variables needed to play nicely with perl and latex tools
