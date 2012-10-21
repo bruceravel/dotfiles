@@ -39,7 +39,7 @@ fi
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
     #alias dir='ls --color=auto --format=vertical'
     #alias vdir='ls --color=auto --format=long'
 fi
@@ -83,7 +83,7 @@ alias acknh="ack --type=nohtml"
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`
-alias ls='env LC_ALL=C ls -F --color=auto'
+alias ls='env LC_ALL=C ls -F --color=auto --group-directories-first'
 
 complete -f -X '!*.@(pl|t|PL)' perl
 complete -f -X '!*.prj' athena
