@@ -1,3 +1,4 @@
 --type-add=perl=.tmpl
+--type-add=python=.lar
 --sort-files
 --ignore-dir=nytprof
