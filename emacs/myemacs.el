@@ -9,6 +9,7 @@
 
 (add-to-list 'load-path "~/dotfiles/emacs/")
 (add-to-list 'load-path "~/git/gnuplot-mode/")
+(add-to-list 'load-path "~/git/gnuplot-mode/")
 
 ;;;;;;;;; Major modes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (autoload 'tt-mode             "tt-mode"          "Major mode for Template Toolkit files" t)
@@ -90,6 +91,22 @@
 	    (reftex-mode t)
 	    (define-key LaTeX-mode-map [(control c) (control \3)] 
 	      'beamer-columns-skeleton)))
+
+
+;;;;;;;;; MMM customization ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'mmm-auto)
+(setq mmm-global-mode 'maybe)
+ 
+(mmm-add-classes
+ '(
+   (embedded-python-cperl
+    :submode cperl
+    :face mmm-code-submode-face
+    :back "__Python__"
+    :front "package")
+   ))
+(mmm-add-mode-ext-class 'python-mode nil 'embedded-python-cperl)
+
 
 
 ;;;;;;;;; ack integration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

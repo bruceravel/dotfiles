@@ -81,6 +81,8 @@ alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 
 alias acknh="ack --type=nohtml"
 
+alias gitup="git fetch upstream && git merge upstream/master"
+
 unalias ls
 eval `dircolors -b ~/.dir_colors`
 alias ls='env LC_ALL=C ls -F --color=auto --group-directories-first'
