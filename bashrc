@@ -77,6 +77,7 @@ alias xemacs="xemacs -bg lemonchiffon3"
 alias rm="rm -i"
 alias pu=~/bin/purge
 alias m=make
+alias o=xdg-open
 alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 
 alias acknh="ack --type=nohtml"
