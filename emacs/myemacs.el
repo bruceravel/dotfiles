@@ -1,3 +1,4 @@
+(setq stack-trace-on-error t)
 (defalias 'perl-mode 'cperl-mode)
 
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

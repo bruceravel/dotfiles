@@ -71,7 +71,7 @@ export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/sty//:"
 alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export ftp_proxy=$http_proxy'
 alias noproxy='export http_proxy=  && export ftp_proxy=$http_proxy'
 
-alias emacs='GDK_NATIVE_WINDOWS=1 emacs'
+#alias emacs='GDK_NATIVE_WINDOWS=1 emacs'
 alias ecb="emacs -geometry 227x64+0+0 -font 7x14 -f ecb-activate"
 alias xemacs="xemacs -bg lemonchiffon3"
 alias rm="rm -i"
@@ -80,6 +80,8 @@ alias m=make
 alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 
 alias acknh="ack --type=nohtml"
+
+alias xo='xdg-open'
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`
