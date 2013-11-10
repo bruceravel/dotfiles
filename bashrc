@@ -77,11 +77,16 @@ alias xemacs="xemacs -bg lemonchiffon3"
 alias rm="rm -i"
 alias pu=~/bin/purge
 alias m=make
+alias o=xdg-open
 alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 
 alias acknh="ack --type=nohtml"
 
+<<<<<<< HEAD
 alias xo='xdg-open'
+=======
+alias gitup="git fetch upstream && git merge upstream/master"
+>>>>>>> e98baa3d729f35b7262682cbd92b474a7a035013
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`
