@@ -71,7 +71,8 @@ export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/
 ## syntax highlight and piping through less, -R = pass raw control characters
 #command -v highlight >/dev/null 2>&1 && {
 if command_exists highlight; then
-   export LESSOPEN="| highlight --out-format=xterm256 %s"
+   export HIGHLIGHT_STYLE="moria"
+   export LESSOPEN='| highlight --out-format=xterm256 --style=$HIGHLIGHT_STYLE %s'
    export LESS=' -R '
 fi
 
