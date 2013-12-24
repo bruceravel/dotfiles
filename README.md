@@ -16,6 +16,7 @@ also need to install `moodbar` package.
  * tangotango color mode for Emacs: https://github.com/juba/color-theme-tangotango
  * Themes for GKrellM: http://www.muhri.net/gkrellm/
  * Zsh (`apt-get install zsh zsh-doc zsh-lovers`) + Prezto: https://github.com/sorin-ionescu/prezto
+ * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/
 
 ## Solving problems ##
 

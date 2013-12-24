@@ -68,6 +68,12 @@ export TEXINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX
 export BSTINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX/sty//:"
 export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX/sty//:"
 
+## syntax highlight and piping through less, -R = pass raw control characters
+command -v highlight >/dev/null 2>&1 && {
+   export LESSOPEN="| highlight --out-format=xterm256 %s"
+   export LESS=' -R '
+}
+
 alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export ftp_proxy=$http_proxy'
 alias noproxy='export http_proxy=  && export ftp_proxy=$http_proxy'
 
@@ -82,11 +88,8 @@ alias upgrade="sudo apt-get update && sudo apt-get upgrade"
 
 alias acknh="ack --type=nohtml"
 
-<<<<<<< HEAD
 alias xo='xdg-open'
-=======
 alias gitup="git fetch upstream && git merge upstream/master"
->>>>>>> e98baa3d729f35b7262682cbd92b474a7a035013
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`
