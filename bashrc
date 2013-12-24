@@ -64,9 +64,9 @@ export PERL5LIB=$HOME/perl
 export PERL5OPT="-I$HOME/git/demeter/lib -I/$HOME/git/BLA-XANES/lib"
 export PAGER=less
 export PATH=~/bin:$PATH
-export TEXINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX/sty//:"
-export BSTINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX/sty//:"
-export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty/:$HOME/TeX/writing/sty:$HOME/TeX/sty//:"
+export TEXINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/TeX/sty//:"
+export BSTINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/TeX/sty//:"
+export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/TeX/sty//:"
 
 ## syntax highlight and piping through less, -R = pass raw control characters
 command -v highlight >/dev/null 2>&1 && {
