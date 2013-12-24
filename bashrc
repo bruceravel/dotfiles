@@ -69,10 +69,11 @@ export BSTINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/
 export BIBINPUTS=".:$HOME/TeX/XAS-Education/sty//:$HOME/TeX/writing/sty//:$HOME/TeX/sty//:"
 
 ## syntax highlight and piping through less, -R = pass raw control characters
-command -v highlight >/dev/null 2>&1 && {
+#command -v highlight >/dev/null 2>&1 && {
+if command_exists highlight; then
    export LESSOPEN="| highlight --out-format=xterm256 %s"
    export LESS=' -R '
-}
+fi
 
 alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export ftp_proxy=$http_proxy'
 alias noproxy='export http_proxy=  && export ftp_proxy=$http_proxy'

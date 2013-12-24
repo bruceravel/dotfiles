@@ -35,6 +35,10 @@ PS1="$COLOR\u@\h$NONE $LIGHT_PURPLE[\W]$NONE $COLOR>$NONE "
 PS2="$LIGHT_RED ... >$NONE "
 }
 
+command_exists () {
+    command -v "$1" >/dev/null 2>&1
+}
+
 function setbnlproxy
 {
 sudo cp /etc/perl/CPAN/Config.pm.bnl /etc/perl/CPAN/Config.pm
