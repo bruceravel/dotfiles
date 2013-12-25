@@ -15,8 +15,13 @@ also need to install `moodbar` package.
  * Ack mode for emacs: https://github.com/jhelwig/ack-and-a-half
  * tangotango color mode for Emacs: https://github.com/juba/color-theme-tangotango
  * Themes for GKrellM: http://www.muhri.net/gkrellm/
+ * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/)
+ * perlbrew : https://metacpan.org/pod/App::perlbrew (with curl via apt-get)
+
+### deprecated ###
+
  * Zsh (`apt-get install zsh zsh-doc zsh-lovers`) + Prezto: https://github.com/sorin-ionescu/prezto
- * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/
+
 
 ## Solving problems ##
 
@@ -25,6 +30,7 @@ also need to install `moodbar` package.
  * permission denied when using locate:
      sudo chgrp mlocate /usr/bin/mlocate 
      sudo chmod g+s /usr/bin/mlocate
+ * mounting filesystems via CIFS: `sec=ntlm` is an essential parameter
 
 ## machine specific ##
 

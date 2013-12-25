@@ -36,6 +36,10 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+if [ -f ~/perl5/perlbrew/etc/bashrc ]; then
+    . ~/perl5/perlbrew/etc/bashrc
+fi
+
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
