@@ -95,22 +95,6 @@
 	      'beamer-columns-skeleton)))
 
 
-;;;;;;;;; MMM customization ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'mmm-auto)
-(setq mmm-global-mode 'maybe)
- 
-(mmm-add-classes
- '(
-   (embedded-python-cperl
-    :submode cperl
-    :face mmm-code-submode-face
-    :back "__Python__"
-    :front "package")
-   ))
-(mmm-add-mode-ext-class 'python-mode nil 'embedded-python-cperl)
-
-
-
 ;;;;;;;;; ack integration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-file "/home/bruce/dotfiles/emacs/ack-and-a-half.el")
 (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
