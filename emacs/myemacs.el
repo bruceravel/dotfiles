@@ -1,4 +1,6 @@
-;(setq stack-trace-on-error t)
+(setq stack-trace-on-error t) ;; this is bad for emacs 23, but needed
+			      ;; to get ECB to load in emacs 24
+                              ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
 (defalias 'perl-mode 'cperl-mode)
 
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
