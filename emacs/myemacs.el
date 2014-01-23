@@ -3,6 +3,12 @@
                               ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
 (defalias 'perl-mode 'cperl-mode)
 
+(require 'package)
+(add-to-list 'package-archives 
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key [home] 'beginning-of-buffer)
 (global-set-key [end] 'end-of-buffer)
@@ -110,6 +116,7 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
+(load-file "/home/bruce/dotfiles/emacs/powerline.el")
 
 ;;;;;;;;; color theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; see http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme
