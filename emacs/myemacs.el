@@ -1,6 +1,10 @@
 (setq stack-trace-on-error t) ;; this is bad for emacs 23, but needed
 			      ;; to get ECB to load in emacs 24
                               ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
+
+;; To deal with "ECB can only be used with" some old version of CEDET see
+;; http://stackoverflow.com/a/16085284
+;; bottom line: edit ecb-cedet-wrapper.el & alter ecb-cedet-required-version-max
 (defalias 'perl-mode 'cperl-mode)
 
 (require 'package)
@@ -21,6 +25,7 @@
 (add-to-list 'load-path "~/git/gnuplot-mode/")
 (add-to-list 'load-path "~/git/gnuplot-mode/")
 
+
 ;;;;;;;;; Major modes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (autoload 'tt-mode             "tt-mode"          "Major mode for Template Toolkit files" t)
 (autoload 'gnuplot-mode        "gnuplot"          "gnuplot major mode"                    t)
@@ -37,7 +42,7 @@
 (add-hook 'tt-mode-hook 'auto-fill-mode)
 
 ;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-file "~/dotfiles/emacs/load-ecb.el")
+;(load-file "~/dotfiles/emacs/load-ecb.el")
 
 ;; search all open buffers that share the same mode as the active buffer.
 ;; see http://www.masteringemacs.org/articles/2011/07/20/searching-buffers-occur-mode/
@@ -116,8 +121,6 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
-(load-file "/home/bruce/dotfiles/emacs/powerline.el")
-
 ;;;;;;;;; color theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; see http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme
 
@@ -174,3 +177,5 @@
 
 ;; (color-theme-tangotango)
 ;; ;(color-theme-bharadwaj)
+
+(load-library "powerline.el")
