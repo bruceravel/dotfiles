@@ -2,3 +2,4 @@
 --type-add=python=.lar
 --sort-files
 --ignore-dir=nytprof
+--ignore-dir=attic

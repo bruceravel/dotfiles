@@ -23,7 +23,6 @@
 (add-to-list 'load-path "~/dotfiles/emacs/")
 (require 'tbemail)
 (add-to-list 'load-path "~/git/gnuplot-mode/")
-(add-to-list 'load-path "~/git/gnuplot-mode/")
 
 
 ;;;;;;;;; Major modes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
