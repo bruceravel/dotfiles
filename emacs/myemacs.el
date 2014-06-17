@@ -40,6 +40,8 @@
 (add-hook 'tt-mode-hook 'linum-mode)
 (add-hook 'tt-mode-hook 'auto-fill-mode)
 
+(add-hook 'fortran-mode-hook 'linum-mode)
+
 ;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(load-file "~/dotfiles/emacs/load-ecb.el")
 
