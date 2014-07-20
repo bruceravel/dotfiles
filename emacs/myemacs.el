@@ -1,7 +1,17 @@
 (setq stack-trace-on-error t) ;; this is bad for emacs 23, but needed
 			      ;; to get ECB to load in emacs 24
                               ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
+
+;; To deal with "ECB can only be used with" some old version of CEDET see
+;; http://stackoverflow.com/a/16085284
+;; bottom line: edit ecb-cedet-wrapper.el & alter ecb-cedet-required-version-max
 (defalias 'perl-mode 'cperl-mode)
+
+(require 'package)
+(add-to-list 'package-archives 
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key [home] 'beginning-of-buffer)
@@ -13,7 +23,7 @@
 (add-to-list 'load-path "~/dotfiles/emacs/")
 (require 'tbemail)
 (add-to-list 'load-path "~/git/gnuplot-mode/")
-(add-to-list 'load-path "~/git/gnuplot-mode/")
+
 
 ;;;;;;;;; Major modes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (autoload 'tt-mode             "tt-mode"          "Major mode for Template Toolkit files" t)
@@ -29,6 +39,8 @@
 
 (add-hook 'tt-mode-hook 'linum-mode)
 (add-hook 'tt-mode-hook 'auto-fill-mode)
+
+(add-hook 'fortran-mode-hook 'linum-mode)
 
 ;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(load-file "~/dotfiles/emacs/load-ecb.el")
@@ -112,7 +124,6 @@
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
 
-
 ;;;;;;;;; color theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; see http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme
 
@@ -169,3 +180,5 @@
 
 ;; (color-theme-tangotango)
 ;; ;(color-theme-bharadwaj)
+
+(load-library "powerline.el")
