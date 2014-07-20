@@ -31,7 +31,9 @@
 (add-hook 'tt-mode-hook 'auto-fill-mode)
 
 ;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-file "~/dotfiles/emacs/load-ecb.el")
+;;(load-file "~/dotfiles/emacs/load-ecb.el")
+(add-to-list 'load-path "/home/bruce/dotfiles/emacs/ecb")
+(require 'ecb)
 
 ;; search all open buffers that share the same mode as the active buffer.
 ;; see http://www.masteringemacs.org/articles/2011/07/20/searching-buffers-occur-mode/
