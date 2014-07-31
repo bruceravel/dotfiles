@@ -80,8 +80,8 @@ if command_exists highlight; then
    export LESS=' -R '
 fi
 
-alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export ftp_proxy=$http_proxy'
-alias noproxy='export http_proxy=  && export ftp_proxy=$http_proxy'
+alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export https_proxy=$http_proxy && export ftp_proxy=$http_proxy'
+alias noproxy='export http_proxy=  &&  export https_proxy=$http_proxy && export ftp_proxy=$http_proxy'
 
 #alias emacs='GDK_NATIVE_WINDOWS=1 emacs'
 alias ecb="emacs -geometry 227x64+0+0 -font 7x14 -f ecb-activate"

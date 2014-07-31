@@ -112,11 +112,11 @@
 
 
 ;;;;;;;;; ack integration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load-file "/home/bruce/dotfiles/emacs/ack-and-a-half.el")
-(autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
-(autoload 'ack-and-a-half "ack-and-a-half" nil t)
-(autoload 'ack-and-a-half-find-file-same "ack-and-a-half" nil t)
-(autoload 'ack-and-a-half-find-file "ack-and-a-half" nil t)
+;; (load-file "/home/bruce/dotfiles/emacs/ack-and-a-half.el")
+;; (autoload 'ack-and-a-half-same "ack-and-a-half" nil t)
+;; (autoload 'ack-and-a-half "ack-and-a-half" nil t)
+;; (autoload 'ack-and-a-half-find-file-same "ack-and-a-half" nil t)
+;; (autoload 'ack-and-a-half-find-file "ack-and-a-half" nil t)
 ;; Create shorter aliases
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)

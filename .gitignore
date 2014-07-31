@@ -1,6 +1,8 @@
 emacs/cedet-1.1/
 emacs/ecb-2.40/
+emacs/ecb/
 backup/
 emacs/ack-and-a-half.el
 emacs/color-theme-tangotango.el
 emacs/tt-mode.el
+gkrellm/*

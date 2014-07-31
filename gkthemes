@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd /home/bruce/.gkrellm2/themes/
-files=`ls /home/bruce/dot/gkrellm-themes/*.tar.gz`
+files=`ls /home/bruce/dotfiles/gkrellm/GKrellM-skins/*.tar.gz`
 for f in $files; do
     tar xvfz $f
 done

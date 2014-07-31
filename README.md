@@ -10,6 +10,8 @@ insert `(load-file  "~/dotfiles/emacs/myemacs.el")` into `~/.emacs`
 Using Amarok's moodbar: http://userbase.kde.org/Amarok/Manual/Various/Moodbar
 also need to install `moodbar` package.
 
+[git push to multiple remote repos](http://blog.lckymn.com/2013/03/11/git-push-to-pull-from-both-github-and-bitbucket/)
+
 ## get things ##
 
  * Latest ECB: https://github.com/ecb-home/ecb (clone into ~/dotfiles/emacs, byte-compile)
