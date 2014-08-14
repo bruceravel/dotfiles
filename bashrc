@@ -78,6 +78,7 @@ if command_exists highlight; then
    export HIGHLIGHT_STYLE="moria"
    export LESSOPEN='| highlight -q --out-format=xterm256 --style=$HIGHLIGHT_STYLE %s'
    export LESS=' -R '
+   alias ccat="highlight -q --out-format=xterm256 --style=$HIGHLIGHT_STYLE"
 fi
 
 alias bnlproxy='export http_proxy=http://192.168.1.130:3128 && export https_proxy=$http_proxy && export ftp_proxy=$http_proxy'
