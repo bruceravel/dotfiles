@@ -91,6 +91,8 @@ EXEC 01;32
 
 .inp  01;31 # input files (purple)
 .conf 01;31
+.json 01;31
+.yaml 01;31
 .sc   01;31 
 .html 01;31 
 
