@@ -13,6 +13,9 @@
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;;(add-to-list 'load-path "~/.emacs.d/packages/highlight-indents/")
+(require 'highlight-indentation)
+
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key [home] 'beginning-of-buffer)
 (global-set-key [end] 'end-of-buffer)
@@ -41,6 +44,9 @@
 (add-hook 'tt-mode-hook 'auto-fill-mode)
 
 (add-hook 'fortran-mode-hook 'linum-mode)
+
+(require 'generic-x)
+(add-to-list 'auto-mode-alist '("\\..*ignore$" . hosts-generic-mode))
 
 ;;;;;;;;; ecb and cedet ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(load-file "~/dotfiles/emacs/load-ecb.el")
@@ -123,6 +129,7 @@
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
 
+(require 'mustache-mode)
 
 ;;;;;;;;; color theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; see http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme

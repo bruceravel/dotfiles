@@ -1,5 +1,6 @@
 --type-add=perl=.tmpl
 --type-add=python=.lar
+--type-add=fortran=.h
 --sort-files
 --ignore-dir=nytprof
 --ignore-dir=attic
