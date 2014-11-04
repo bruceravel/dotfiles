@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Pod::POM;
+use Pod::POM::View::Pod;
+
+my $parser = Pod::POM->new();
+my $pom = $parser->parse_file($ARGV[0]) || die $parser->error();
+print Pod::POM::View::Pod->print($pom);
