@@ -23,4 +23,5 @@ ln -sf ~/dotfiles/ackrc          ~/.ackrc
 cp     ~/.slashemrc-gtk          ~/dotfiles/backup/slashemrc
 ln -sf ~/dotfiles/slashemrc      ~/.slashemrc-gtk
 
+cp podextract ~/bin
 
