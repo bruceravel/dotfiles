@@ -1,4 +1,9 @@
 #  -*- sh -*- 
+
+## see https://github.com/jimeh/git-aware-prompt
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source ~/dotfiles/prompt.sh
+
 function prompt
 {
 
@@ -31,7 +36,7 @@ else
 fi
 local temp=$(tty)
 local GRAD1=${temp:5}
-PS1="$COLOR\u@\h$NONE $LIGHT_PURPLE[\W]$NONE $COLOR>$NONE " 
+PS1="$COLOR\u@\h$NONE $LIGHT_PURPLE[\W]$NONE$GREY\$git_branch$NONE $COLOR>$NONE " 
 PS2="$LIGHT_RED ... >$NONE "
 }
 

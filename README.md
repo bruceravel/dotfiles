@@ -20,6 +20,7 @@ also need to install `moodbar` package.
  * Themes for GKrellM: http://www.muhri.net/gkrellm/
  * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/)
  * perlbrew : https://metacpan.org/pod/App::perlbrew (with curl via apt-get)
+ * git aware prompt: https://github.com/jimeh/git-aware-prompt
 
 ### deprecated ###
 

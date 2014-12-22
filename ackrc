@@ -4,3 +4,4 @@
 --sort-files
 --ignore-dir=nytprof
 --ignore-dir=attic
+--ignore-dir=legacy

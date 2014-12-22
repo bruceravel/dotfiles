@@ -53,6 +53,8 @@ EXEC 01;32
 .btm     01;32
 .bat     01;32
 
+.pad     01;37 # bright white
+
 .tar     01;35 # compresed and archived files (light magenta)
 .tgz     01;35         
 .tar.gz  01;35
