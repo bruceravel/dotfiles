@@ -26,6 +26,13 @@ also need to install `moodbar` package.
 
  * Zsh (`apt-get install zsh zsh-doc zsh-lovers`) + Prezto: https://github.com/sorin-ionescu/prezto
 
+## emacs packages ##
+
+1. magit
+2. markdown-mode
+3. mustache-mode
+4. ecb
+5. ack-and-a-half
 
 ## Solving problems ##
 
