@@ -42,6 +42,7 @@ also need to install `moodbar` package.
      sudo chgrp mlocate /usr/bin/mlocate 
      sudo chmod g+s /usr/bin/mlocate
  * mounting filesystems via CIFS: `sec=ntlm` is an essential parameter
+ * [Kindle and gmtp](http://askubuntu.com/questions/177555/managing-kindle-fire-with-on-12-04-via-micro-usb)
 
 ## machine specific ##
 
