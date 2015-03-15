@@ -21,6 +21,7 @@ also need to install `moodbar` package.
  * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/)
  * perlbrew : https://metacpan.org/pod/App::perlbrew (with curl via apt-get)
  * git aware prompt: https://github.com/jimeh/git-aware-prompt
+ * PDF service menus: http://www.egregorion.net/
 
 ### deprecated ###
 

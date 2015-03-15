@@ -6,7 +6,8 @@ packages="gkrellm aptitude texlive-full git emacs python-pip cpanplus
           pandoc moodbar highlight vlc valgrind autoconf cifs-utils
           gmtp keymon perl-doc albatross-gtk-theme bluebird-gtk-theme
           greybird-gtk-theme human-gtk-theme numix-gtk-theme orion-gtk-theme
-          ttf-mscorefonts-installer inkscape unoconv latex-beamer auctex"
+          ttf-mscorefonts-installer inkscape unoconv latex-beamer auctex
+          pdfjam pdftk"
 
 apt-get install $packages
 
