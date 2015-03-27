@@ -21,11 +21,19 @@ also need to install `moodbar` package.
  * Highlight (package `highlight` via apt-get or http://www.andre-simon.de/)
  * perlbrew : https://metacpan.org/pod/App::perlbrew (with curl via apt-get)
  * git aware prompt: https://github.com/jimeh/git-aware-prompt
+ * PDF service menus: http://www.egregorion.net/
 
 ### deprecated ###
 
  * Zsh (`apt-get install zsh zsh-doc zsh-lovers`) + Prezto: https://github.com/sorin-ionescu/prezto
 
+## emacs packages ##
+
+1. magit
+2. markdown-mode
+3. mustache-mode
+4. ecb
+5. ack-and-a-half
 
 ## Solving problems ##
 
@@ -35,6 +43,7 @@ also need to install `moodbar` package.
      sudo chgrp mlocate /usr/bin/mlocate 
      sudo chmod g+s /usr/bin/mlocate
  * mounting filesystems via CIFS: `sec=ntlm` is an essential parameter
+ * [Kindle and gmtp](http://askubuntu.com/questions/177555/managing-kindle-fire-with-on-12-04-via-micro-usb)
 
 ## machine specific ##
 
