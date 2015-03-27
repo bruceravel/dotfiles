@@ -1,0 +1,99 @@
+#! /bin/bash
+# script  to add in erasing ~ files, convert and zipping
+# $Id: prune,v 1.3 1995/07/13 13:28:23 leisner Exp leisner $
+
+# exit immediately on errors??
+set -e
+
+function echo
+{
+	builtin echo -e "$*"
+}
+
+function usage {
+	echo  $progname [ -b9Zvq ] [pathname [ pathname ... ]]
+	echo  "\t-b -- leave ~ files along"
+	echo  "\t-9 -- use best zip level"
+	echo  "\t-Z -- use znew on .Z files"
+	echo  "\t-v -- be verbose"
+	echo  "\t-z -- zip uncompressed files"
+	echo  "\t-f -- follow symbolic links."
+	echo  "\t-n -- pretend and list commands which will run"
+	echo  "\t-o -- overwrite"
+	echo  "\t-h -- generate this help screen"
+	echo  "The current working directory is the default path"
+	exit 1
+
+}
+
+
+function xargs {
+	command xargs --no-run-if-empty  $*
+}
+
+
+
+progname=$0
+# this will be echo to show commands
+pretend=
+
+# if true, don't erase ~ files
+leave_backups=
+
+#  pass this to  commands, -v or null
+verbose=-v
+
+# null or -9, pass this to gzip/znew
+level9=
+
+# if set, convert .Z files to .gz
+dot_Z=
+
+# if -follow, pass this to find.
+follow=
+
+# if -f, force compression (remove old file)
+overwrite=
+
+# if set, gzip uncompressed files.
+gzip=
+
+while getopts "bohfz9vZn" c; do
+	case $c in
+		b)	leave_backups=true ;;
+		v)	verbose=-v ;;
+		Z)	dot_Z=true ;;
+		9)	level9=-9  ;;
+		n)	pretend=echo ;;
+		f)	follow=-follow;;
+		z)	gzip=true;;
+		o)	overwrite=-f;;
+		\? | h)
+			usage
+			;;
+	esac
+done
+
+
+shift $[OPTIND-1]
+
+if [ $# -ne 1 ]; then
+#	usage
+	find . -name '*~' -type f $follow | xargs $pretend rm  $verbose
+	find . -name '*.bak' -type f $follow | xargs $pretend rm  $verbose
+fi
+
+
+if [ $dot_Z ]; then
+	find $* -name '*.Z' -type f $follow  | xargs $pretend znew $overwrite $level9 $verbose
+fi
+
+if [ ! $leave_backups ]; then
+	find . -name '*~' -type f $follow | xargs $pretend rm  $verbose
+	find . -name '*.bak' -type f $follow | xargs $pretend rm  $verbose
+fi
+
+# ignore any ~ files, only do files
+if [ $gzip ]; then
+	find . -name '*[!.gz]' -name '*[!~]' -type f $follow | xargs $pretend gzip $level9 $overwrite $verbose
+fi
