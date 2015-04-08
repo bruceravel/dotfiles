@@ -111,6 +111,10 @@ complete -f -X '!*.@(apj|prj|inp)' artemis
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
+if [ -f ~/.bash_local-lib ]; then
+    . ~/.bash_local-lib
+fi
 
 
 prompt
+
