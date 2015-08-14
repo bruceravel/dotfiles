@@ -56,6 +56,12 @@ A file called =local.el= contains customizations specific to a machine.
 
 
 
+* Modes to look into
+
+1. expand-region
+2. company
+3. ace-jump-mode
+
 * Configurations
 
 ** Package
@@ -96,6 +102,8 @@ installed. To ensure we install missing packages if they are missing.
                ack-and-a-half       ; ack interface
                org                  ; outline-based notes management and organizer
                powerline            ; rewrite of Powerline
+               pdf-tools            ; pdf viewer in emacs
+               tt-mode              ; mode for template toolkit templates
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -149,8 +157,6 @@ Some things to turn off
               '(tool-bar-mode                ; No toolbars, more room for text.
              ))
        (funcall mode 0))
-     (require 'powerline)
-     (powerline-default-theme)
    #+END_SRC
 
 And some things to turn on
@@ -161,6 +167,9 @@ And some things to turn on
                 abbrev-mode                   ; teh --> the
              ))
         (funcall mode 1))
+     (require 'powerline)
+     (powerline-default-theme)
+     (pdf-tools-install)
    #+END_SRC
 
 ** abbrevs
@@ -175,7 +184,6 @@ Set the global abbrev table with some of my least favorite typos
          ("teh" "the" nil 2)
         ))
    #+END_SRC
-
 
 ** Theme
 
@@ -231,12 +239,11 @@ Emacs 24.  This setup was a lot more complicated in Emacs 23
      ;; (color-theme-tangotango)
    #+END_SRC
 
-
-
 ** ECB
 
-Setting this is necessary to get ECB to work with Emacs 24, but it is
-bad for Emacs 23.  [[http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24][See this.]]
+Setting stack-trace-on-error to =t= is necessary to get ECB to work
+with Emacs 24, but it is bad for Emacs 23.  [[http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24][See this.]]  Then enable ecb
+and set some customizations.
 
    #+BEGIN_SRC emacs-lisp
      (if (= emacs-major-version 24)
@@ -251,17 +258,39 @@ bad for Emacs 23.  [[http://stackoverflow.com/questions/8833235/install-ecb-with
      )
    #+END_SRC
 
-** perl
+** Programming
 
-Use [[https://github.com/jrockway/cperl-mode][cperl-mode]] instead of the default.  Enable linum-mode.
+*** prog mode
+
+I like linum in all programming modes (perl, python, fortran, c etc
+all inherit from prog-mode as of Emacs 24.1).
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'linum-mode)
+   #+END_SRC
+
+*** perl
+
+Use [[https://github.com/jrockway/cperl-mode][cperl-mode]] instead of the default.
 
    #+BEGIN_SRC emacs-lisp
      (defalias 'perl-mode 'cperl-mode)
-     (add-hook 'cperl-mode-hook 'linum-mode)
    #+END_SRC
 
+*** Fortran
 
-** gnuplot mode
+A few fortran customizations
+
+   #+BEGIN_SRC emacs-lisp
+     (setq
+           fortran-comment-indent-style (quote relative)
+           fortran-continuation-indent 7
+     )
+   #+END_SRC
+
+** Programming-adjacent modes
+
+*** gnuplot mode
 
 Enable [[https://github.com/bruceravel/gnuplot-mode][gnuplot-mode]] and set the =.gp= extension
 
@@ -271,43 +300,7 @@ Enable [[https://github.com/bruceravel/gnuplot-mode][gnuplot-mode]] and set the 
      (add-to-list 'auto-mode-alist '("\\.gp$"           . gnuplot-mode))
    #+END_SRC
 
-** markdown mode
-
-Enable [[https://github.com/defunkt/markdown-mode][markdown-mode]] and set the =.md= extension
-
-   #+BEGIN_SRC emacs-lisp
-     (autoload 'markdown-mode       "markdown-mode.el" "Major mode for editing Markdown files" t)
-     (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-     (add-hook 'markdown-mode-hook
-               (lambda ()
-                 (auto-fill-mode 1)
-               ))
-   #+END_SRC
-
-** template toolkit mode
-
-Enable [[https://github.com/davorg/tt-mode][tt-mode]] for Template Toolkit and set the =.tt= extension
-
-   #+BEGIN_SRC emacs-lisp
-     (autoload 'tt-mode             "tt-mode"          "Major mode for Template Toolkit files" t)
-     (add-to-list 'auto-mode-alist '("\\.tt$"           . tt-mode))
-     (add-hook 'tt-mode-hook 'linum-mode)
-     (add-hook 'tt-mode-hook 'auto-fill-mode)
-   #+END_SRC
-
-** Fortran mode
-
-Linum mode is useful in fortran-mode
-
-   #+BEGIN_SRC emacs-lisp
-     (add-hook 'fortran-mode-hook 'linum-mode)
-     (setq
-           fortran-comment-indent-style (quote relative)
-           fortran-continuation-indent 7
-     )
-   #+END_SRC
-
-** Generic mode
+*** Generic mode
 
 [[http://emacswiki.org/emacs/GenericMode][See this]]
 
@@ -316,7 +309,36 @@ Linum mode is useful in fortran-mode
      (add-to-list 'auto-mode-alist '("\\..*ignore$" . hosts-generic-mode))
    #+END_SRC
 
-** AucTex
+** Document formatting and generation
+
+*** markdown mode
+
+Enable [[https://github.com/defunkt/markdown-mode][markdown-mode]] and set the =.md= extension
+
+   #+BEGIN_SRC emacs-lisp
+     (autoload 'markdown-mode       "markdown-mode.el" "Major mode for editing Markdown files" t)
+     (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+     (add-hook 'markdown-mode-hook
+               (lambda ()
+                 (auto-fill-mode t)
+               ))
+   #+END_SRC
+
+*** template toolkit mode
+
+Enable [[https://github.com/davorg/tt-mode][tt-mode]] for Template Toolkit and set the =.tt= extension
+
+   #+BEGIN_SRC emacs-lisp
+     (autoload 'tt-mode "tt-mode" "Major mode for Template Toolkit files" t)
+     (add-to-list 'auto-mode-alist '("\\.tt$"           . tt-mode))
+     (add-hook 'tt-mode-hook 
+               (lambda ()
+                 (linum-mode t)
+                 (auto-fill-mode t)
+               ))
+   #+END_SRC
+
+*** AucTex
 
 This is a skeleton for my most-used Beamer construct in AucTex.  It
 makes a columns environment with two 50% width columns.
@@ -347,7 +369,86 @@ makes a columns environment with two 50% width columns.
                     (output-html "xdg-open"))))
    #+END_SRC
 
-Note to self: biblatex
+This prompts for width and y-position of the bottomnote environment
+defined in =sty/header.tex= from [[https://github.com/bruceravel/XAS-Education][my XAS-Education repository]].  It uses
+optional arguments from [[https://www.ctan.org/pkg/xparse][xparse]], thus the curly brackets inserted by
+AucTex must be converted to square brackets.  (Note: an improvement
+would be to remove empty brackets.)
+
+   #+BEGIN_SRC emacs-lisp
+     (defun LaTeX-after-insert-bottomnote (env start end)
+       "Turn argument delimiters from {} into []"
+       (when (string-equal env "bottomnote")
+         (save-excursion
+           (goto-char start)
+           (forward-line 1)
+           (backward-sexp 2)
+           (let (value)
+                (dotimes (number 2 value)             ;fix TWO argument brackets
+                  (re-search-forward "{\\([^}]*\\)}") ;open curly, followed by
+                                                      ;not close curly,
+                                                      ;followed by close curly
+                  (replace-match "[\\1]")             ;replace with square brackets
+               ))
+           )
+         )
+       )
+     (add-hook 'LaTeX-after-insert-env-hooks 'LaTeX-after-insert-bottomnote  nil nil)
+   #+END_SRC
+
+Note to self: /biblatex/
+
+*** mustache-mode
+
+Templating using [[https://mustache.github.io/][mustache]] and/or [[https://github.com/defunkt/pystache][pystache]].  This is used in
+[[https://github.com/xraypy/feff85exafs][feff85exafs]] unit testing framework and by [[https://github.com/bruceravel/SCFtests][SCFtests]].
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'mustache-mode)
+   #+END_SRC
+
+*** Demeter templates
+
+Demeter uses [[https://metacpan.org/pod/Text::Template][Text::Template]] for its templates which generate code for
+ifeffit, larch, feff, atoms, gnuplot, and other things.  Demeter comes
+with a crappy little major mode that does more or less the right
+things for ifeffit templates.  /To do: update ifeffit-mode to do
+syntax highlighting for larch, feff, and gnuplot./
+
+   #+BEGIN_SRC emacs-lisp
+      (let ((ifm-file "~/git/demeter/tools/ifeffit-mode.el"))
+         (when (file-exists-p ifm-file)
+            (load-file ifm-file)
+            (autoload 'ifm-mode "ifeffit-macro" "ifm mode." t)
+            ))
+   #+END_SRC
+
+** Flyspell
+
+   Flyspell offers on-the-fly spell checking. We can enable flyspell for all
+   text-modes with this snippet.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'text-mode-hook 'turn-on-flyspell)
+   #+END_SRC
+
+   To use flyspell for programming there is =flyspell-prog-mode=, that only
+   enables spell checking for comments and strings. We can enable it for all
+   programming modes using the =prog-mode-hook=.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+   #+END_SRC
+
+** Org
+
+   When editing org-files with source-blocks, we want the source blocks to
+   be themed as they would in their native mode.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq org-src-fontify-natively t
+           org-confirm-babel-evaluate nil)
+   #+END_SRC
 
 ** Ack integration
 
@@ -360,13 +461,16 @@ Use Ack in emacs
      (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
    #+END_SRC
 
-** mustache-mode
+** mail
 
-Templating using [[https://mustache.github.io/][mustache]] and/or [[https://github.com/defunkt/pystache][pystache]].
+[[http://os.inf.tu-dresden.de/~mp26/download/tbemail.el][tbemail.el]] is a simple editing mode useful when using emacs as the
+composer for Thunderbird.  I keep a copy in my emacs folder.
 
    #+BEGIN_SRC emacs-lisp
-     (require 'mustache-mode)
+     (require 'tbemail)
+     (add-hook 'tbemail-mode-hook 'auto-fill-mode)
    #+END_SRC
+
 
 * Key Bindings
 
