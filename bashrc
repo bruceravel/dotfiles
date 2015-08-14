@@ -100,6 +100,7 @@ alias gitup="git fetch upstream && git merge upstream/master"
 alias ssha='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
 alias vg='valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all'
+alias pssp='pushd; scons; sudo scons install; pushd'
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`

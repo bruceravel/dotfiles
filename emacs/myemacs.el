@@ -113,8 +113,28 @@
 	  (lambda ()
 	    (auto-fill-mode t)
 	    (reftex-mode t)
+	    (LaTeX-add-environments '("bottomnote" "width" "y-position"))
 	    (define-key LaTeX-mode-map [(control c) (control \3)] 
 	      'beamer-columns-skeleton)))
+
+(defun LaTeX-after-insert-bottomnote (env start end)
+  "Turn argument delimiters from {} into []"
+  (when (string-equal env "bottomnote")
+    (save-excursion
+      (goto-char start)
+      (forward-line 1)
+      (backward-sexp 2)
+      (let (value)
+	(dotimes (number 2 value)	;fix TWO argument brackets
+	  (re-search-forward "{\\([^}]*\\)}") ;open curly, followed by
+					      ;not close curly,
+					      ;followed by close curly
+	  (replace-match "[\\1]")	      ;replace with square brackets
+	  ))
+      )
+    )
+  )
+(add-hook 'LaTeX-after-insert-env-hooks 'LaTeX-after-insert-bottomnote  nil nil)
 
 
 ;;;;;;;;; ack integration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
