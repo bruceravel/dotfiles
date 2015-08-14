@@ -1,6 +1,7 @@
-(setq stack-trace-on-error t) ;; this is bad for emacs 23, but needed
-			      ;; to get ECB to load in emacs 24
-                              ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
+(if (= emacs-major-version 24)
+    (setq stack-trace-on-error t)) ;; this is bad for emacs 23, but needed
+                                   ;; to get ECB to load in emacs 24
+                                   ;; see http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
 
 ;; To deal with "ECB can only be used with" some old version of CEDET see
 ;; http://stackoverflow.com/a/16085284
@@ -9,12 +10,11 @@
 
 (require 'package)
 (add-to-list 'package-archives 
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+    '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 ;;(add-to-list 'load-path "~/.emacs.d/packages/highlight-indents/")
-(require 'highlight-indentation)
+;(require 'highlight-indentation)
 
 ;;;;;;;;; keys ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key [home] 'beginning-of-buffer)
