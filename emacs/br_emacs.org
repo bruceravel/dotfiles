@@ -61,6 +61,8 @@ A file called =local.el= contains customizations specific to a machine.
 1. expand-region
 2. company
 3. ace-jump-mode
+4. emacs-ide (http://emacs-ide.tuxfamily.org/) in case ECB ever rots
+   away completely
 
 * Configurations
 
@@ -170,6 +172,13 @@ And some things to turn on
      (require 'powerline)
      (powerline-default-theme)
      (pdf-tools-install)
+   #+END_SRC
+
+Answering /yes/ and /no/ to each question from Emacs can be tedious, a
+single /y/ or /n/ will suffice.
+
+   #+BEGIN_SRC emacs-lisp
+     (fset 'yes-or-no-p 'y-or-n-p)
    #+END_SRC
 
 ** abbrevs
