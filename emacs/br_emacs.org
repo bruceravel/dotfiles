@@ -109,6 +109,8 @@ installed. To ensure we install missing packages if they are missing.
                avy                  ; jump to position on screen
                expand-region        ; semantically increase selection
                paradox              ; nicer package presentation
+               indent-guide         ; show vertical lines to guide indentation
+	       browse-kill-ring     ; visualize the kill ring
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -175,6 +177,7 @@ And some things to turn on
      (dolist (mode
               '(show-paren-mode               ; highlight matching parens
                 abbrev-mode                   ; teh --> the
+                column-number-mode
              ))
         (funcall mode 1))
      (require 'uniquify)
@@ -322,8 +325,9 @@ Use Ack in emacs
 
 *** mail
 
-[[http://os.inf.tu-dresden.de/~mp26/download/tbemail.el][tbemail.el]] is a simple editing mode useful when using emacs as the
-composer for Thunderbird.  I keep a copy in my emacs folder.
+The venerable [[https://github.com/martinp26/tbemail][tbemail.el]] is a simple editing mode useful when using
+emacs as the composer for Thunderbird.  I keep a copy in my emacs
+folder.
 
    #+BEGIN_SRC emacs-lisp
      (require 'tbemail)
@@ -360,6 +364,19 @@ A few fortran customizations
      )
    #+END_SRC
 
+*** python
+
+F*ckin' indentation
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'python-mode-hook 'indent-guide-mode)
+     (add-hook 'python-mode-hook
+               (lambda ()
+                   (setq indent-guide-recursive t)
+		   (setq indent-guide-threshold 0) ; see https://github.com/zk-phi/indent-guide/issues/30
+               ))
+   #+END_SRC
+
 ** Programming-adjacent modes
 
 *** ECB
@@ -378,10 +395,6 @@ and set some customizations.
            ecb-source-path (quote (("~/git" "git") ("~/TeX" "TeX") ("~/dotfiles" "dotfiles")))
            ecb-tip-of-the-day nil
      )
-     ;(add-hook 'ecb-activate-hook
-     ;          (lambda ()
-     ;             (set-scroll-bar-mode (quote right))
-     ;          ))
    #+END_SRC
 
 *** gnuplot mode
@@ -396,7 +409,7 @@ Enable [[https://github.com/bruceravel/gnuplot-mode][gnuplot-mode]] and set the 
 
 *** Generic mode
 
-[[http://emacswiki.org/emacs/GenericMode][See this]]
+General configuration file support. [[http://emacswiki.org/emacs/GenericMode][See this]]
 
    #+BEGIN_SRC emacs-lisp
      (require 'generic-x)
@@ -537,8 +550,8 @@ syntax highlighting for larch, feff, and gnuplot./
 
 * Key Bindings
 
-A few key bindings programmed into my wrists + bindings for [[https://github.com/abo-abo/avy][avy]],
-[[https://github.com/magnars/expand-region.el][expand-region]], ...
+A few key bindings programmed into my wrists + bindings 
+for [[https://github.com/abo-abo/avy][avy]], [[https://github.com/magnars/expand-region.el][expand-region]], and other stuff
 
    #+BEGIN_SRC emacs-lisp
      (global-set-key [home]  'beginning-of-buffer)
@@ -557,4 +570,7 @@ A few key bindings programmed into my wrists + bindings for [[https://github.com
 
      ; expand-region
      (global-set-key (kbd "C-=") 'er/expand-region)
+
+     ; browse-kill-ring
+     (define-key global-map [?\s-y] 'browse-kill-ring)
    #+END_SRC
