@@ -102,8 +102,8 @@ installed. To ensure we install missing packages if they are missing.
                ecb                  ; code browser
                ack-and-a-half       ; ack interface
                org                  ; outline-based notes management and organizer
-               ;powerline            ; rewrite of Powerline
-               smart-mode-line
+               ;powerline            ; rewrite of Powerline (nice, but clashes with ecb)
+               smart-mode-line      ; prettified mode line
                pdf-tools            ; pdf viewer in emacs
                tt-mode              ; mode for template toolkit templates
                avy                  ; jump to position on screen
