@@ -334,6 +334,40 @@ folder.
      (add-hook 'tbemail-mode-hook 'auto-fill-mode)
    #+END_SRC
 
+*** DOuble CAps to Single Caps
+
+Here is [[http://emacs.stackexchange.com/questions/13970/fixing-double-capitals-as-i-type/13975#13975][something]] pretty brilliant ([[http://endlessparentheses.com/fixing-double-capitals-as-you-type.html][via endless parentheses]]):
+
+   #+BEGIN_SRC emacs-lisp
+     (defun dcaps-to-scaps ()
+       "Convert word in DOuble CApitals to Single Capitals."
+       (interactive)
+       (and (= ?w (char-syntax (char-before)))
+            (save-excursion
+              (and (if (called-interactively-p)
+                       (skip-syntax-backward "w")
+                     (= -3 (skip-syntax-backward "w")))
+                   (let (case-fold-search)
+                     (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
+                   (capitalize-word 1)))))
+
+     (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+
+     ;;And the minor mode definition:
+
+     (define-minor-mode dubcaps-mode
+       "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
+     Single Capitals as you type."
+       :init-value nil
+       :lighter (" DC")
+       (if dubcaps-mode
+           (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+         (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+
+     ;;(add-hook 'text-mode-hook #'dubcaps-mode)
+   #+END_SRC
+
+
 ** Programming
 
 *** prog mode
@@ -471,6 +505,7 @@ Some basic setting for AucTex
           (auto-fill-mode t)
           (reftex-mode t)
           (linum-mode t)
+          (dubcaps-mode t)
         ))
    #+END_SRC
 
@@ -525,8 +560,8 @@ Note to self: /biblatex/
 
 *** mustache-mode
 
-Templating using [[https://mustache.github.io/][mustache]] and/or [[https://github.com/defunkt/pystache][pystache]].  This is used in
-[[https://github.com/xraypy/feff85exafs][feff85exafs]] unit testing framework and by [[https://github.com/bruceravel/SCFtests][SCFtests]].
+Templating using [[https://mustache.github.io/][mustache]] and/or [[https://github.com/defunkt/pystache][pystache]].  This is used for
+templating in [[https://github.com/xraypy/feff85exafs][feff85exafs]] unit testing framework and by [[https://github.com/bruceravel/SCFtests][SCFtests]].
 
    #+BEGIN_SRC emacs-lisp
      (require 'mustache-mode)
