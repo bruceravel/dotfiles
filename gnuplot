@@ -1,4 +1,4 @@
-set terminal qt font "Droid Sans, 12" enhanced
+set terminal wxt font "Droid Sans, 12" enhanced
 set encoding iso_8859_15
 set style data lines
 
