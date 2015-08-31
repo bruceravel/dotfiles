@@ -332,6 +332,7 @@ folder.
    #+BEGIN_SRC emacs-lisp
      (require 'tbemail)
      (add-hook 'tbemail-mode-hook 'auto-fill-mode)
+     (add-hook 'tbemail-mode-hook 'flyspell-mode)
    #+END_SRC
 
 *** DOuble CAps to Single Caps
