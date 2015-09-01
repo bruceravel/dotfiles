@@ -111,6 +111,7 @@ installed. To ensure we install missing packages if they are missing.
                paradox              ; nicer package presentation
                indent-guide         ; show vertical lines to guide indentation
 	       browse-kill-ring     ; visualize the kill ring
+               xkcd                 ; show xkcd cartoon at startup?
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -133,7 +134,8 @@ to load, but is not a high priority.
      (require 'idle-require)             ; Need in order to use idle-require
      (require 'expand-region)            ; semantically expand selection
      (require 'ecb)
-                
+     (require 'xkcd)
+
      (dolist (feature
               '(auto-compile             ; auto-compile .el files
                 ox-latex                 ; the latex-exporter (from org)
@@ -381,10 +383,18 @@ all inherit from prog-mode as of Emacs 24.1).
 
 *** perl
 
-Use [[https://github.com/jrockway/cperl-mode][cperl-mode]] instead of the default.
+Use [[https://github.com/jrockway/cperl-mode][cperl-mode]] instead of the default.  Need to fetch pod-mode from 
+https://github.com/renormalist/emacs-pod-mode
 
    #+BEGIN_SRC emacs-lisp
+     (require 'pod-mode)
      (defalias 'perl-mode 'cperl-mode)
+     (eval-after-load 'cperl-mode
+      '(progn
+         (define-key cperl-mode-map (kbd "RET")
+                     'reindent-then-newline-and-indent)))
+     (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
+     (add-hook 'pod-mode-hook 'font-lock-mode)
    #+END_SRC
 
 *** Fortran
@@ -467,7 +477,7 @@ General configuration file support. [[http://emacswiki.org/emacs/GenericMode][Se
 Enable [[https://github.com/defunkt/markdown-mode][markdown-mode]] and set the =.md= extension
 
    #+BEGIN_SRC emacs-lisp
-     (autoload 'markdown-mode       "markdown-mode.el" "Major mode for editing Markdown files" t)
+     (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
      (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
      (add-hook 'markdown-mode-hook
                (lambda ()
@@ -481,7 +491,7 @@ Enable [[https://github.com/davorg/tt-mode][tt-mode]] for Template Toolkit and s
 
    #+BEGIN_SRC emacs-lisp
      (autoload 'tt-mode "tt-mode" "Major mode for Template Toolkit files" t)
-     (add-to-list 'auto-mode-alist '("\\.tt$"           . tt-mode))
+     (add-to-list 'auto-mode-alist '("\\.tt$" . tt-mode))
      (add-hook 'tt-mode-hook 
                (lambda ()
                  (linum-mode t)
