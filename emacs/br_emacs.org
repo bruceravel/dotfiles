@@ -184,7 +184,7 @@ And some things to turn on
         (funcall mode 1))
      (require 'uniquify)
      (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-     ; powerline is eye candy that does not play well with ECB
+     ; powerline is eye candy that does not play well with ECB, try sml instead
      ;(require 'powerline)
      ;(powerline-default-theme)
      (pdf-tools-install)
@@ -334,7 +334,7 @@ folder.
    #+BEGIN_SRC emacs-lisp
      (require 'tbemail)
      (add-hook 'tbemail-mode-hook 'auto-fill-mode)
-     (add-hook 'tbemail-mode-hook 'flyspell-mode)
+     (add-hook 'tbemail-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
 *** DOuble CAps to Single Caps
