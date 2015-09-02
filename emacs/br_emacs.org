@@ -112,6 +112,7 @@ installed. To ensure we install missing packages if they are missing.
                indent-guide         ; show vertical lines to guide indentation
 	       browse-kill-ring     ; visualize the kill ring
                xkcd                 ; show xkcd cartoon at startup?
+               tangotango-theme     ; my fave
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -226,7 +227,6 @@ Fancy-pants package management with [[https://github.com/Malabarba/paradox/][par
      (fset 'list-packages 'paradox-list-packages)
    #+END_SRC
 
-
 *** abbrevs
 
 Set the global abbrev table with some of my least favorite typos
@@ -240,14 +240,18 @@ Set the global abbrev table with some of my least favorite typos
         ))
    #+END_SRC
 
-*** Theme
+*** Theme and font
 
 This sets my favorite theme, [[https://github.com/juba/color-theme-tangotango][tangotango]], which is not distributed with
 emacs.  I keep my own copy in my emacs folder.  This works for
 Emacs 24.  This setup was a lot more complicated in Emacs 23
 
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'custom-theme-load-path "~/dotfiles/emacs")
+     (when (member "Inconsolata" (font-family-list))
+        (add-to-list 'default-frame-alist '(font . "Inconsolata-10" ))
+        (set-face-attribute 'default t :font "Inconsolata-10" ))
+
+     ;(add-to-list 'custom-theme-load-path "~/dotfiles/emacs")
      (load-theme 'tangotango t)
    #+END_SRC
 
