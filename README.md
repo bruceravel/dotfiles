@@ -22,6 +22,7 @@ also need to install `moodbar` package.
  * perlbrew : https://metacpan.org/pod/App::perlbrew (with curl via apt-get)
  * git aware prompt: https://github.com/jimeh/git-aware-prompt
  * PDF service menus: http://www.egregorion.net/
+ * orgmk: https://github.com/fniessen/orgmk
 
 ### deprecated ###
 

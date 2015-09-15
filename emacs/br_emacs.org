@@ -100,7 +100,7 @@ installed. To ensure we install missing packages if they are missing.
                markdown-mode        ; major mode for Markdown-formatted files
                mustache-mode        ; mustache templating
                ecb                  ; code browser
-               ack-and-a-half       ; ack interface
+               ack                  ; ack interface
                org                  ; outline-based notes management and organizer
                ;powerline            ; rewrite of Powerline (nice, but clashes with ecb)
                smart-mode-line      ; prettified mode line
@@ -113,6 +113,7 @@ installed. To ensure we install missing packages if they are missing.
 	       browse-kill-ring     ; visualize the kill ring
                xkcd                 ; show xkcd cartoon at startup?
                tangotango-theme     ; my fave
+	       htmlize              ; used by orgmk
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -318,16 +319,6 @@ I should ever find myself back there...
       (add-hook 'prog-mode-hook 'flyspell-prog-mode)
     #+END_SRC
 
-*** Ack integration
-
-Use Ack in emacs
-
-   #+BEGIN_SRC emacs-lisp
-     (defalias 'ack 'ack-and-a-half)
-     (defalias 'ack-same 'ack-and-a-half-same)
-     (defalias 'ack-find-file 'ack-and-a-half-find-file)
-     (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
-   #+END_SRC
 
 *** mail
 
@@ -400,6 +391,7 @@ https://github.com/renormalist/emacs-pod-mode
                      'reindent-then-newline-and-indent)))
      (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
      (add-hook 'pod-mode-hook 'font-lock-mode)
+     (add-hook 'pod-mode-hook 'turn-on-flyspell)
    #+END_SRC
 
 *** Fortran
