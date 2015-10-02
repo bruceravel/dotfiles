@@ -403,7 +403,12 @@ A few fortran customizations
            fortran-comment-indent-style (quote relative)
            fortran-continuation-indent 7
      )
-     (add-hook f90-mode-hook 'indent-guide-mode)
+     (add-hook 'f90-mode-hook 'indent-guide-mode)
+     (add-hook 'f90-mode-hook
+               (lambda ()
+                   (setq indent-guide-recursive t)
+		   (setq indent-guide-threshold 0) ; see https://github.com/zk-phi/indent-guide/issues/30
+               ))
    #+END_SRC
 
 *** python
