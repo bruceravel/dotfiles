@@ -75,6 +75,7 @@ EXEC 01;32
 # .xpm 07;30;41
 
 .f   07;30;42 # source code in fortran or TeX or SGML (brown)
+.f90 07;30;42
 .pl  07;30;42  
 .tex 07;30;42  
 .bib 01;31  
@@ -87,7 +88,9 @@ EXEC 01;32
 .el  07;30;42 
 
 .o   07;30;46 # objects images (dark cyan)
-.a   07;30;46 
+.a   01;36 
+.so  01;36 
+.os  07;30;46 
 .dvi 07;30;46 
 .elc 07;30;46 
 
