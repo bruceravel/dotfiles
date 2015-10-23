@@ -114,6 +114,7 @@ installed. To ensure we install missing packages if they are missing.
                xkcd                 ; show xkcd cartoon at startup?
                tangotango-theme     ; my fave
 	       htmlize              ; used by orgmk
+	       sr-speedbar          ; in-frame speedbar
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -203,6 +204,23 @@ single /y/ or /n/ will suffice.
    #+END_SRC
 
 ** Features
+
+*** sr-speedbar
+
+Customizations for in-frame speedbar and org-based note-taker
+
+   #+BEGIN_SRC emacs-lisp
+     (defun br--notepad ()
+       "Org-based note taker"
+       (interactive)
+       (setq sr-speedbar-width 30)
+       (sr-speedbar-open)
+       (cd "/home/bruce/Dropbox/stash/Notes")
+       (speedbar-toggle-show-all-files)
+       (setq sr-speedbar-right-side nil) 
+       )
+   #+END_SRC
+
 
 *** mode-line
 

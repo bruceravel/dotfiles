@@ -86,7 +86,9 @@ alias noproxy='export http_proxy=  &&  export https_proxy=$http_proxy && export 
 
 #alias emacs='GDK_NATIVE_WINDOWS=1 emacs'
 alias ecb="emacs -geometry 227x64+0+0 -font 7x14 -f ecb-activate"
-alias xemacs="xemacs -bg lemonchiffon3"
+alias mynotes="emacs -geometry 1100x700 -f br--notepad"
+
+#alias xemacs="xemacs -bg lemonchiffon3"
 alias rm="rm -i"
 alias pu=~/bin/purge
 alias m=make
