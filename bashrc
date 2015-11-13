@@ -106,7 +106,7 @@ alias pssp='pushd; scons; sudo scons install; pushd'
 
 unalias ls
 eval `dircolors -b ~/.dir_colors`
-alias ls='env LC_ALL=C ls -F --color=auto --group-directories-first'
+alias ls='env LC_ALL=C ls -F --color=auto --group-directories-first --show-control-chars'
 
 complete -f -X '!*.@(pl|t|PL)' perl
 complete -f -X '!*.prj' athena
