@@ -8,7 +8,7 @@ packages="gkrellm aptitude texlive-full git emacs python-pip cpanplus
           greybird-gtk-theme human-gtk-theme numix-gtk-theme orion-gtk-theme
           ttf-mscorefonts-installer inkscape unoconv latex-beamer auctex
           pdfjam pdftk scons swig libx11-dev libwx-perl python-nose key-mon
-          python-pystache gimp"
+          python-pystache gimp calibre"
 
 apt-get install $packages
 
