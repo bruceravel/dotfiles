@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: image
+# key: img
+# --
+.. figure:: ${1:../path}
+   :target: ${1:path}
+   :width: ${3:65%}
+   :align: ${4:center}
+
+$0

@@ -115,6 +115,7 @@ installed. To ensure we install missing packages if they are missing.
                tangotango-theme     ; my fave
 	       htmlize              ; used by orgmk
 	       sr-speedbar          ; in-frame speedbar
+	       yasnippet
                ))
             ;; Remove all packages already installed
             (packages (remove-if 'package-installed-p packages)))
@@ -220,6 +221,16 @@ Customizations for in-frame speedbar and org-based note-taker
        (setq sr-speedbar-right-side nil) 
        )
    #+END_SRC
+
+
+*** yasnippet
+
+   #+BEGIN_SRC emacs-lisp
+   (require 'yasnippet)
+   ;(add-to-list yas-snippet-dirs "/home/bruce/dotfiles/emacs/yasnippets")
+   (yas-reload-all)
+   #+END_SRC
+
 
 
 *** mode-line
@@ -492,6 +503,18 @@ General configuration file support. [[http://emacswiki.org/emacs/GenericMode][Se
       (setq org-src-fontify-natively t
             org-confirm-babel-evaluate nil)
     #+END_SRC
+
+*** rst made
+
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'rst-mode-hook #'yas-minor-mode)
+    (add-hook 'rst-mode-hook
+              (lambda ()
+                 (electric-indent-local-mode -1)
+		 (set (make-local-variable 'yas-indent-line) 'fixed)
+		 ))
+    #+END_SRC
+
 
 *** markdown mode
 
