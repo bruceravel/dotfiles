@@ -46,6 +46,21 @@ also need to install `moodbar` package.
  * mounting filesystems via CIFS: `sec=ntlm` is an essential parameter
  * [Kindle and gmtp](http://askubuntu.com/questions/177555/managing-kindle-fire-with-on-12-04-via-micro-usb)
 
+## trackpad ##
+
+To disable mouse motion but retain 3-button mouse response:
+
+http://askubuntu.com/a/387592
+
+In /usr/share/X11/xorg.conf.d/50-synaptics.conf:
+
+    Section "InputClass"
+        Identifier "Default clickpad buttons"
+        MatchDriver "synaptics"
+        Option "SoftButtonAreas" "64% 0 1 42% 36% 64% 1 42%"
+        Option "AreaBottomEdge" "1"
+    EndSection
+
 ## machine specific ##
 
 Make a file called, `~/.bash_local`.  It gets sourced from the
