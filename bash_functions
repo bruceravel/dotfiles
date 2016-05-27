@@ -53,3 +53,8 @@ function setnoproxy
 {
 sudo cp /etc/perl/CPAN/Config.pm.noproxy /etc/perl/CPAN/Config.pm
 }
+
+function datasection
+{
+sed -n '/^__DATA__/,$p' $1  | sed '1d'
+}
