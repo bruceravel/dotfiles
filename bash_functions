@@ -63,6 +63,12 @@ function h2d
     echo $((16#$1))
 }
 
+function datasection
+{
+sed -n '/^__DATA__/,$p' $1  | sed '1d'
+}
+
+
 ## http://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
 man() {
     env \
@@ -74,4 +80,3 @@ man() {
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
-}
