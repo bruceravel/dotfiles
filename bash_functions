@@ -80,3 +80,10 @@ man() {
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
+}
+
+function launch {
+    $@ 2>/dev/null
+};
+alias l=launch
+    
