@@ -191,6 +191,7 @@ And some things to turn on
      ; powerline is eye candy that does not play well with ECB, try sml instead
      ;(require 'powerline)
      ;(powerline-default-theme)
+     (setq pdf-info-epdfinfo-program "/home/bruce/source/pdf-tools/src/epdfinfo")
      (pdf-tools-install)
      (setq sml/no-confirm-load-theme t)
      (setq sml/theme 'respectful)
@@ -636,6 +637,23 @@ syntax highlighting for larch, feff, and gnuplot./
             (autoload 'ifm-mode "ifeffit-macro" "ifm mode." t)
             ))
    #+END_SRC
+
+*** EASE
+
+This is my old emacs package for dealing with Feff, Feffit, Autobk,
+and Atoms back in the day.  It sort of still works.
+
+   #+BEGIN_SRC emacs-lisp
+       (setq load-path (append (list "~/git/ease" ) load-path))
+       (setq auto-mode-alist
+             (append (list (cons "\\.inp$" 'input-mode))
+                     auto-mode-alist))
+       (autoload 'ease-mode  "ease"  "EASE" t)
+       (autoload 'input-mode "input" "Input major mode" t)
+       (add-hook 'dired-load-hook '(lambda () (load-library "ease-dired")))
+   #+END_SRC
+
+
 
 * Key Bindings
 
