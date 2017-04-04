@@ -5,6 +5,7 @@
 #+LATEX_HEADER: \usepackage{inconsolata}
 #+PROPERTY: header-args :tangle yes :comments org
 
+
 * About
 
 This is an Emacs configuration file written in [[http://orgmode.org][Org mode]] following
@@ -28,7 +29,10 @@ a new machine.  Then exit and restart emacs.  Good to go!
 Tangle /this/ file to =.el= when saved.
 
    #+BEGIN_SRC emacs-lisp
-     (defun tangle-init ()
+   ;;; https://github.com/fniessen/emacs-load-time
+   ;(add-to-list 'load-path "/home/bruce/source/emacs-load-time")
+   ;(require 'emacs-load-time)
+   (defun tangle-init ()
        "If the current buffer is 'init.org' the code-blocks are
      tangled, and the tangled file is compiled."
        (let ((my-emacs-dir "/home/bruce/dotfiles/emacs/"))
@@ -111,7 +115,7 @@ installed. To ensure we install missing packages if they are missing.
                paradox              ; nicer package presentation
                indent-guide         ; show vertical lines to guide indentation
 	       browse-kill-ring     ; visualize the kill ring
-               xkcd                 ; show xkcd cartoon at startup?
+               ;xkcd                 ; show xkcd cartoon at startup?
                tangotango-theme     ; my fave
 	       htmlize              ; used by orgmk
 	       sr-speedbar          ; in-frame speedbar
@@ -138,7 +142,7 @@ to load, but is not a high priority.
      (require 'idle-require)             ; Need in order to use idle-require
      (require 'expand-region)            ; semantically expand selection
      (require 'ecb)
-     (require 'xkcd)
+     ;(require 'xkcd)
 
      (dolist (feature
               '(auto-compile             ; auto-compile .el files
@@ -286,10 +290,10 @@ Emacs 24.  This setup was a lot more complicated in Emacs 23
      (load-theme 'tangotango t)
    #+END_SRC
 
+#+BEGIN_COMMENT
 The following is how theme setting was done in Emacs 23, just in case
 I should ever find myself back there...
 
-   #+BEGIN_SRC emacs-lisp :tangle no
      ;(require 'color-theme)
      ;(setq color-theme-load-all-themes nil)
 
@@ -330,7 +334,7 @@ I should ever find myself back there...
      ;; (add-hook 'after-make-frame-functions 'test-win-sys)
 
      ;; (color-theme-tangotango)
-   #+END_SRC
+#+END_COMMENT
 
 *** Flyspell
 
