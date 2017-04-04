@@ -25,7 +25,7 @@ https://github.com/fniessen/org-html-themes
 
 
 #+BEGIN_COMMENT
-The following lines are from Fabrice Niessen's org-mode macros
+The following lines are modified from Fabrice Niessen's org-mode macros
 https://github.com/fniessen/org-macros
 #+END_COMMENT
 
@@ -38,9 +38,9 @@ https://github.com/fniessen/org-macros
 
 #+MACRO: fixme @@html:<span class="fixme">FIXME</span>@@
 
-#+MACRO: highlight @@html:<span style="background-color: $1;">$2</span>@@
+#+MACRO: highlight @@html:<span style="background-color: $1;">$2</span>@@@@latex:\sethlcolor{$1}\hl{$2}@@
 
-#+MACRO: hl {{{highlight(#FFFF00,$1)}}}
+#+MACRO: hl {{{highlight(yellow,$1)}}}
 
 #+MACRO: loremipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
