@@ -119,10 +119,6 @@ fi
 if [ -f ~/.bash_local-lib ]; then
     . ~/.bash_local-lib
 fi
-if [ -f ~/.bash.local-lib ]; then
-    . ~/.bash.local-lib
-fi
-
 
 prompt
 

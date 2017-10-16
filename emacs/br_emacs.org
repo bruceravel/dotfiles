@@ -20,7 +20,7 @@ a new machine.  Then exit and restart emacs.  Good to go!
      ;; We can't tangle without org!
      (require 'org)
      ;; Open the configuration
-     (find-file (concat user-emacs-directory "init.org"))
+     (find-file (concat "/home/bruce/dotfiles/emacs/" "br_emacs.org"))
      ;; tangle it
      (org-babel-tangle)
    #+END_SRC
@@ -637,7 +637,7 @@ syntax highlighting for larch, feff, and gnuplot./
    #+BEGIN_SRC emacs-lisp
       (let ((ifm-file "~/git/demeter/tools/ifeffit-mode.el"))
          (when (file-exists-p ifm-file)
-            (load-file ifm-file)
+            ;(load-file ifm-file)
             (autoload 'ifm-mode "ifeffit-macro" "ifm mode." t)
             ))
    #+END_SRC
@@ -648,13 +648,11 @@ This is my old emacs package for dealing with Feff, Feffit, Autobk,
 and Atoms back in the day.  It sort of still works.
 
    #+BEGIN_SRC emacs-lisp
-       (setq load-path (append (list "~/git/ease" ) load-path))
-       (setq auto-mode-alist
-             (append (list (cons "\\.inp$" 'input-mode))
-                     auto-mode-alist))
+       (add-to-list 'load-path "~/git/ease/")
+       (add-to-list 'auto-mode-alist '("\\.inp" . input-mode))
        (autoload 'ease-mode  "ease"  "EASE" t)
        (autoload 'input-mode "input" "Input major mode" t)
-       (add-hook 'dired-load-hook '(lambda () (load-library "ease-dired")))
+       ;(add-hook 'dired-load-hook '(lambda () (load-library "ease-dired")))
    #+END_SRC
 
 

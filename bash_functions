@@ -27,9 +27,9 @@ local WHITE="\[\033[1;37m\]"
 
 local NONE="\[\033[0m\]"
 
-if [ "$USER" == "root" ]; then
+if [[ "$USER" == "root" ]]; then
     COLOR=$LIGHT_RED
-elif [ -n $SSH_CLIENT ]; then
+elif [[ 'x' == "x$SSH_CLIENT" ]]; then
     COLOR=$YELLOW
 else
     COLOR=$GREEN

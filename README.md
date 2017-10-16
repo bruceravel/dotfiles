@@ -25,6 +25,7 @@ also need to install `moodbar` package.
  * orgmk: https://github.com/fniessen/orgmk
  * org macros: https://github.com/fniessen/org-macros (cp
    org-macros.setup to `~/dotfiles/org/`)
+ * pod-mode: https://github.com/renormalist/emacs-pod-mode
 
 ### deprecated ###
 
