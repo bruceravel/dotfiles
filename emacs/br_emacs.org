@@ -9,7 +9,7 @@
 * About
 
 This is an Emacs configuration file written in [[http://orgmode.org][Org mode]] following
-[[https://github.com/larstvei/dot-emacs][this example]].
+[[https://github.com/larstvei/dot-emacs][this example]]. 
 
 I am not doing the fancy bit of having an initial =init.el= whose job
 is to tangle this org file, overwriting the initial =init.el=.  That
@@ -20,7 +20,7 @@ a new machine.  Then exit and restart emacs.  Good to go!
      ;; We can't tangle without org!
      (require 'org)
      ;; Open the configuration
-     (find-file (concat "/home/bruce/dotfiles/emacs/" "br_emacs.org"))
+     (find-file (concat "/home/xf06bm/dotfiles/emacs/" "br_emacs.org"))
      ;; tangle it
      (org-babel-tangle)
    #+END_SRC
@@ -87,46 +87,49 @@ Packages can be fetched from different mirrors, [[http://melpa.milkbox.net/#/][m
 archive and is well maintained.
 
    #+BEGIN_SRC emacs-lisp
+     (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
      (setq package-archives
-           '(("gnu" . "http://elpa.gnu.org/packages/")
-             ("org" . "http://orgmode.org/elpa/")
-             ("MELPA" . "http://melpa.milkbox.net/packages/")))
+           '(
+	     ;("gnu" . "http://elpa.gnu.org/packages/")
+             ;("org" . "http://orgmode.org/elpa/")
+             ("MELPA" . "https://stable.melpa.org/packages/")))
    #+END_SRC
 
 The configuration assumes that the packages listed below are
 installed. To ensure we install missing packages if they are missing.
 
    #+BEGIN_SRC emacs-lisp
-     (let* ((packages
-             '(idle-require         ; load elisp libraries while Emacs is idle
-               auto-compile         ; automatically compile Emacs Lisp libraries
-               magit                ; control Git from Emacs
-               markdown-mode        ; major mode for Markdown-formatted files
-               mustache-mode        ; mustache templating
-               ecb                  ; code browser
-               ack                  ; ack interface
-               org                  ; outline-based notes management and organizer
-               ;powerline            ; rewrite of Powerline (nice, but clashes with ecb)
-               smart-mode-line      ; prettified mode line
-               ;pdf-tools            ; pdf viewer in emacs
-               tt-mode              ; mode for template toolkit templates
-               avy                  ; jump to position on screen
-               expand-region        ; semantically increase selection
-               paradox              ; nicer package presentation
-               indent-guide         ; show vertical lines to guide indentation
-	       browse-kill-ring     ; visualize the kill ring
-               ;xkcd                 ; show xkcd cartoon at startup?
-               tangotango-theme     ; my fave
-	       htmlize              ; used by orgmk
-	       sr-speedbar          ; in-frame speedbar
-	       yasnippet
-               ))
-            ;; Remove all packages already installed
-            (packages (remove-if 'package-installed-p packages)))
-       (when packages
-         (package-refresh-contents)
-         (mapcar 'package-install packages)
-         ))
+     ;; (let* ((packages
+     ;;         '(;idle-require         ; load elisp libraries while Emacs is idle
+     ;;           auto-compile         ; automatically compile Emacs Lisp libraries
+     ;;           magit                ; control Git from Emacs
+     ;;           markdown-mode        ; major mode for Markdown-formatted files
+     ;;           mustache-mode        ; mustache templating
+     ;;           ;ecb                  ; code browser
+     ;;           ;ack                  ; ack interface
+     ;;           ;ag                   ; ag interface
+     ;;           ;org                  ; outline-based notes management and organizer
+     ;;           ;powerline            ; rewrite of Powerline (nice, but clashes with ecb)
+     ;;           smart-mode-line      ; prettified mode line
+     ;;           ;pdf-tools            ; pdf viewer in emacs
+     ;;           ;tt-mode              ; mode for template toolkit templates
+     ;;           avy                  ; jump to position on screen
+     ;;           expand-region        ; semantically increase selection
+     ;;           ;paradox              ; nicer package presentation
+     ;;           indent-guide         ; show vertical lines to guide indentation
+     ;; 	  browse-kill-ring     ; visualize the kill ring
+     ;;           ;xkcd                 ; show xkcd cartoon at startup?
+     ;;           ;tangotango-theme     ; my fave
+     ;; 	  htmlize              ; used by orgmk
+     ;; 	  sr-speedbar          ; in-frame speedbar
+     ;; 	  yasnippet
+     ;;           ))
+     ;;        ;; Remove all packages already installed
+     ;;        ;(packages (remove-if 'package-installed-p packages)))
+     ;;   (when packages
+     ;;     (package-refresh-contents)
+     ;;     (mapcar 'package-install packages)
+     ;;     ))
    #+END_SRC
 
 ** Require
@@ -139,21 +142,22 @@ where Emacs is in idle. So this is great for stuff you eventually want
 to load, but is not a high priority.
 
    #+BEGIN_SRC emacs-lisp
-     (require 'idle-require)             ; Need in order to use idle-require
+     ;(require 'idle-require)             ; Need in order to use idle-require
      (require 'expand-region)            ; semantically expand selection
+     (add-to-list 'load-path "/home/xf06bm/git/ecb")
      (require 'ecb)
      ;(require 'xkcd)
 
-     (dolist (feature
-              '(auto-compile             ; auto-compile .el files
-                ox-latex                 ; the latex-exporter (from org)
-                ox-md                    ; Markdown exporter (from org)
-                recentf                  ; recently opened files
-                tex-mode))               ; TeX, LaTeX, and SliTeX mode commands
-       (idle-require feature))
+     ;; (dolist (feature
+     ;;          '(auto-compile             ; auto-compile .el files
+     ;;            ox-latex                 ; the latex-exporter (from org)
+     ;;            ox-md                    ; Markdown exporter (from org)
+     ;;            recentf                  ; recently opened files
+     ;;            tex-mode))               ; TeX, LaTeX, and SliTeX mode commands
+     ;;   (idle-require feature))
 
-     (setq idle-require-idle-delay 5)
-     (idle-require-mode 1)
+     ;; (setq idle-require-idle-delay 5)
+     ;; (idle-require-mode 1)
    #+END_SRC
 
 ** defaults
@@ -162,7 +166,7 @@ Set some sensible default values
 
    #+BEGIN_SRC emacs-lisp
      (add-to-list 'load-path "~/dotfiles/emacs")
-     (add-to-list 'load-path "~/git/gnuplot-mode/")
+     (add-to-list 'load-path "~/git/gnuplot/")
      (set-scroll-bar-mode (quote right))
      (setq
            inhibit-startup-message t       ; like ... duh!
@@ -282,6 +286,8 @@ emacs.  I keep my own copy in my emacs folder.  This works for
 Emacs 24.  This setup was a lot more complicated in Emacs 23
 
    #+BEGIN_SRC emacs-lisp
+     ;(add-to-list 'custom-theme-load-path "~/git/color-theme-tangotango/color-theme-tangotango")
+     (load-file "/home/xf06bm/git/color-theme-tangotango/tangotango-theme.el")
      (when (member "Inconsolata" (font-family-list))
         (add-to-list 'default-frame-alist '(font . "Inconsolata-10" ))
         (set-face-attribute 'default t :font "Inconsolata-10" ))
@@ -289,6 +295,7 @@ Emacs 24.  This setup was a lot more complicated in Emacs 23
      ;(add-to-list 'custom-theme-load-path "~/dotfiles/emacs")
      (load-theme 'tangotango t)
    #+END_SRC
+
 
 #+BEGIN_COMMENT
 The following is how theme setting was done in Emacs 23, just in case
@@ -408,6 +415,8 @@ I like linum in all programming modes (perl, python, fortran, c etc
 all inherit from prog-mode as of Emacs 24.1).
 
    #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "/home/xf06bm/git/highlight-indent-guides")
+     (require 'highlight-indent-guides)
      (add-hook 'prog-mode-hook 'linum-mode)
    #+END_SRC
 
@@ -417,6 +426,7 @@ Use [[https://github.com/jrockway/cperl-mode][cperl-mode]] instead of the defaul
 https://github.com/renormalist/emacs-pod-mode
 
    #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "/home/xf06bm/git/emacs-pod-mode")
      (require 'pod-mode)
      (defalias 'perl-mode 'cperl-mode)
      (eval-after-load 'cperl-mode
@@ -450,12 +460,13 @@ A few fortran customizations
 F*ckin' indentation
 
    #+BEGIN_SRC emacs-lisp
-     (add-hook 'python-mode-hook 'indent-guide-mode)
-     (add-hook 'python-mode-hook
-               (lambda ()
-                   (setq indent-guide-recursive t)
-		   (setq indent-guide-threshold 0) ; see https://github.com/zk-phi/indent-guide/issues/30
-               ))
+     (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+     (elpy-enable)
+     ;(add-hook 'python-mode-hook
+     ;          (lambda ()
+     ;              (setq indent-guide-recursive t)
+     ;		   (setq indent-guide-threshold 0) ; see https://github.com/zk-phi/indent-guide/issues/30
+     ;          ))
    #+END_SRC
 
 ** Programming-adjacent modes

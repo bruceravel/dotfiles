@@ -5,8 +5,8 @@ if [ ! -e ~/dotfiles/backup ]; then
 fi
 
 
-cp     ~/.bashrc                 ~/dotfiles/backup/bashrc
-ln -sf ~/dotfiles/bashrc         ~/.bashrc
+#cp     ~/.bashrc                 ~/dotfiles/backup/bashrc
+#ln -sf ~/dotfiles/bashrc         ~/.bashrc
 
 cp     ~/.bash_functions         ~/dotfiles/backup/bash_functions 
 ln -sf ~/dotfiles/bash_functions ~/.bash_functions
