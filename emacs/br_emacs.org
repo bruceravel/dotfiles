@@ -80,7 +80,7 @@ loaded, along with =package=, which is obviously needed.
    #+BEGIN_SRC emacs-lisp
      (require 'cl)
      (require 'package)
-     (package-initialize)
+     ;(package-initialize)
    #+END_SRC
 
 Packages can be fetched from different mirrors, [[http://melpa.milkbox.net/#/][melpa]] is the largest
@@ -141,9 +141,13 @@ configuration. =idle-require= delays the =require=-calls to a time
 where Emacs is in idle. So this is great for stuff you eventually want
 to load, but is not a high priority.
 
+See this thread to know how to deal with a deprecated function from
+advice.el.  In short, need to simply not use ad-with-originals
+https://mail.gnu.org/archive/html/bug-gnu-emacs/2020-11/msg01867.html
+
    #+BEGIN_SRC emacs-lisp
      ;(require 'idle-require)             ; Need in order to use idle-require
-     (require 'expand-region)            ; semantically expand selection
+     ;(require 'expand-region)            ; semantically expand selection
      (add-to-list 'load-path "/home/xf06bm/git/ecb")
      (require 'ecb)
      ;(require 'xkcd)
@@ -287,10 +291,10 @@ Emacs 24.  This setup was a lot more complicated in Emacs 23
 
    #+BEGIN_SRC emacs-lisp
      ;(add-to-list 'custom-theme-load-path "~/git/color-theme-tangotango/color-theme-tangotango")
-     (load-file "/home/xf06bm/git/color-theme-tangotango/tangotango-theme.el")
-     (when (member "Inconsolata" (font-family-list))
-        (add-to-list 'default-frame-alist '(font . "Inconsolata-10" ))
-        (set-face-attribute 'default t :font "Inconsolata-10" ))
+     (load-file "~/git/clones/color-theme-tangotango/tangotango-theme.el")
+     ;(when (member "Inconsolata" (font-family-list))
+     ;   (add-to-list 'default-frame-alist '(font . "Inconsolata-10" ))
+     ;   (set-face-attribute 'default t :font "Inconsolata-10" ))
 
      ;(add-to-list 'custom-theme-load-path "~/dotfiles/emacs")
      (load-theme 'tangotango t)
@@ -412,10 +416,11 @@ Here is [[http://emacs.stackexchange.com/questions/13970/fixing-double-capitals-
 *** prog mode
 
 I like linum in all programming modes (perl, python, fortran, c etc
-all inherit from prog-mode as of Emacs 24.1).
+all inherit from prog-mode as of Emacs 24.1).  See
+https://github.com/DarthFennec/highlight-indent-guides
 
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'load-path "/home/xf06bm/git/highlight-indent-guides")
+     (add-to-list 'load-path "~/git/clones/highlight-indent-guides")
      (require 'highlight-indent-guides)
      (add-hook 'prog-mode-hook 'linum-mode)
    #+END_SRC
@@ -461,6 +466,9 @@ F*ckin' indentation
 
    #+BEGIN_SRC emacs-lisp
      (add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+     (add-hook 'python-mode-hook 
+               (lambda ()
+                 (flymake-mode -1)))
      (elpy-enable)
      ;(add-hook 'python-mode-hook
      ;          (lambda ()
